@@ -1,0 +1,156 @@
+.App {
+  display: inline-block;
+  background-color: navajowhite;
+  min-height: 100%;
+  height:100%;
+  width: 100%
+}
+
+/*.App-logo {*/
+/*  height: 40vmin;*/
+/*  pointer-events: none;*/
+/*}*/
+
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  .diceImages{*/
+/*    animation: App-logo-spin infinite 20s linear;*/
+/*  }*/
+/*  .diceImages1{*/
+/*    animation: App-logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dice {
+position: absolute;
+top: 20%;
+
+  margin-left: 560px;
+  overflow: hidden;
+
+  /*width: 400px;*/
+  /*height: 280px;*/
+
+}
+
+.diceImages{
+  max-height: 80px;
+  max-width: 80px;
+  width: 100%;
+  border: solid red 1px;
+}
+
+.diceImages1 {
+  max-height: 80px;
+  max-width: 80px;
+  width: 100%;
+  border: solid red 1px;
+}
+
+.monopolyMan{
+  max-height: 150px;
+  max-width: 150px;
+  width: 100%;
+  border: solid transparent 1px;
+  margin-left: 250px;
+
+}
+
+
+.players {
+  position: absolute;
+  top: 60%;
+  margin-left: 68%;
+  background-color: transparent;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  color: white;
+  padding: 20px;
+}
+
+.highlighting {
+  color: #ff0000;
+}
+
+
+/*.monopolyTitle {*/
+/*  display: inline-block;*/
+/*  font-weight: 300;*/
+/*  -webkit-transform: scale(2, 1);*/
+/*  margin: 15px;*/
+/*  color: white;*/
+/*  padding-left: 70px;*/
+/*  padding-right: 70px;*/
+/*  transform: rotate(-20deg);*/
+/*  z-index: 5;*/
+/*}*/
+
+.monopolyTitle {
+  display: block;
+  position: fixed;
+  font-weight: 300;
+  -webkit-transform: scale(2,1);
+  margin: -70px;
+  color: white;
+  padding-left: 2px;
+  transform: rotate(-34deg);
+  z-index: 3;
+  font-size: 100px;
+  padding-right: 848px;
+  right: -20%;
+
+}
+
+
+.chance {
+  max-height: 80px;
+  max-width: 80px;
+  margin-top: 2%;
+}
+
+.freeParking{
+
+  max-height: 60px;
+  max-width: 80px;
+  margin-top: 2%;
+  padding-bottom: 15px;
+}
+
+.communityChest {
+  max-height: 45px;
+  max-width: 80px;
+  margin-top: -2%;
+  padding-bottom: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  z-index: -2;
+
+
+
+}
+
