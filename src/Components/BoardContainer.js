@@ -20,9 +20,9 @@ class BoardContainer extends Component {
         for(let i= 0; i < 11 ; i++){
 
             places.push(
-                <BoardData
-                    data={this.props.dataArray[i]}
-                /> )
+              <BoardData
+                data={this.props.dataArray[i]}
+              /> )
         }
 
         return <div style={{ width:'100%', display: 'flex', flexDirection: 'row-reverse', height: '15%',} }> {places} </div>
@@ -35,10 +35,10 @@ class BoardContainer extends Component {
 
 
             places.push(
-                <BoardData
-                    data={this.props.dataArray[i]}
-                    position={'side'}
-                /> )
+              <BoardData
+                data={this.props.dataArray[i]}
+                position={'side'}
+              /> )
         }
 
         return <div style={{width:'100%', display: 'flex', justifyContent: 'flex-end', flexDirection: 'column-reverse',
@@ -51,7 +51,7 @@ class BoardContainer extends Component {
         for(let i= 20; i < 31 ; i++){
 
             places.push( <BoardData
-                data={this.props.dataArray[i]}/> )
+              data={this.props.dataArray[i]}/> )
         }
 
         return <div style={{width:'100%', display: 'flex', flexDirection: 'row', height: '10%'}}> {places} </div>
@@ -63,17 +63,17 @@ class BoardContainer extends Component {
         for(let i= 31; i < 40 ; i++){
 
             places.push(
-                <BoardData
-                    data={this.props.dataArray[i]}
-                    position={'side'}
-                /> )
+              <BoardData
+                data={this.props.dataArray[i]}
+                position={'side'}
+              /> )
         }
 
         return <div style={{width:'100%', display: 'flex', flexDirection: 'column',
             alignItems:'flex-end', height: '80%', padding: '1px',}}> {places} </div>
     };
 
-   // after submitting, removes input box  && dispatches action - moving this state data into store //
+    // after submitting, removes input box  && dispatches action - moving this state data into store //
 
     onFinish = () => {
         this.setState({ showPlayersPrompt: false });
@@ -101,16 +101,16 @@ class BoardContainer extends Component {
         this.setState({
             players: [...players,
                 {
-                name: playerName,
-                id: players.length + 1,
-                properties: [],
-                money: 5000000,
-                active: false,
-                position: 0,
-            } ], playerName: ''  })
+                    name: playerName,
+                    id: players.length + 1,
+                    properties: [],
+                    money: 5000000,
+                    active: false,
+                    position: 0,
+                } ], playerName: ''  })
     };
 
- // Removes player with CLICK
+    // Removes player with CLICK
     onRemovePlayer = (id) => {
 
         const newState = this.state;
@@ -121,9 +121,9 @@ class BoardContainer extends Component {
 
         this.setState(newState);
 
-};
- // prop reducer add player id to property
- //    player reducer add propery id to the player
+    };
+    // prop reducer add player id to property
+    //    player reducer add propery id to the player
 
     render() {
 
@@ -131,48 +131,48 @@ class BoardContainer extends Component {
 
 
         return (
-            <div style={{ width:'100%', position: 'relative', backgroundColor: 'brown', height: '100%', } }>
-                {/*window.innerHeight,this was instead of height 100%*/}
-                {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
-                    width: '400px', height: '300px', backgroundColor: "darkRed", top: '10%', position: 'absolute',
-                    right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '6px', padding: '20px', fontSize: '24px',}}>
+          <div style={{ width:'100%', position: 'relative', backgroundColor: 'brown', height: '100%', } }>
+              {/*window.innerHeight,this was instead of height 100%*/}
+              {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
+                  width: '400px', height: '300px', backgroundColor: "darkRed", top: '10%', position: 'absolute',
+                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '6px', padding: '20px', fontSize: '24px',}}>
 
 
-                        <form onSubmit={this.addPlayer}>
+                  <form onSubmit={this.addPlayer}>
 
-                            <input
-                                style={{ width: '100px'}}
-                                value={playerName}
-                                placeholder="Enter name"
-                                onChange={event => this.handleKeyDown(event)} required/>
-                            <button style={{ width: '100px'}} type={'submit'}>Add Player</button>
-                            <button style={{ width: '100px'}} type={'button'}
-                            onClick={this.onRemovePlayer}
-                            >Click on player to remove</button>
+                      <input
+                        style={{ width: '100px'}}
+                        value={playerName}
+                        placeholder="Enter name"
+                        onChange={event => this.handleKeyDown(event)} required/>
+                      <button style={{ width: '100px'}} type={'submit'}>Add Player</button>
+                      <button style={{ width: '100px'}} type={'button'}
+                              onClick={this.onRemovePlayer}
+                      >Click on player to remove</button>
 
-                        </form>
+                  </form>
 
-                    {players.map(player =>
-                        <div
-                            style={{padding: '10px'}}
-                            onClick={this.onRemovePlayer}>{player.name}</div>  )}
+                  {players.map(player =>
+                    <div
+                      style={{padding: '10px'}}
+                      onClick={this.onRemovePlayer}>{player.name}</div>  )}
 
-                    <button style={{ width: '100px'}} onClick={this.onFinish}>Finished </button>
+                  <button style={{ width: '100px'}} onClick={this.onFinish}>Finished </button>
 
-                    {/*<img className={'monopolyMan'} alt={'monoMan'} src={require('../assests/monoPolyMan.png')} />*/}
+                  {/*<img className={'monopolyMan'} alt={'monoMan'} src={require('../assests/monoPolyMan.png')} />*/}
 
-                </div> }
-                {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
+              </div> }
+              {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
 
 
 
-                {this.renderBoardTop()}
-                <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%' }}>
-                    {this.renderBoardLeft()}
-                    {this.renderBoardRight()}
-                </div>
-                {this.renderBoardBottom()}
-            </div>
+              {this.renderBoardTop()}
+              <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%' }}>
+                  {this.renderBoardLeft()}
+                  {this.renderBoardRight()}
+              </div>
+              {this.renderBoardBottom()}
+          </div>
         )
     }
 }
