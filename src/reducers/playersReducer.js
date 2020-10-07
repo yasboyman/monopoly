@@ -88,7 +88,6 @@ const playersReducer  = (state =  initialState, action) => {
             console.log(findActivePlayer);
 
             const newPlayer = state.players.map((player) => {
-
                 if ( player.active) {
                     return {
                         ...player,

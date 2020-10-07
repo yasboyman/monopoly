@@ -7,20 +7,18 @@ const BoardData = ({data, position, players}) => {
     // console.log('dice Position: ' , `${(window.innerHeight - 120)/20}px`)   // what is this 20px?
 
     const style = {
-        border: 'solid 1px trasparent',
+        border: 'solid 1px black',
         width: position === 'side' ? '17%' : '80%' ,
         fontSize: '9px',
-         height: `${(window.innerHeight)/11.75}px` ,
+        height: `${(window.innerHeight)/11.75}px` ,
         // `${(window.innerHeight) / 20}px'
         marginBottom: '30px',
-
-    textAlign: 'center',
-
+        textAlign: 'center',
         margin: '1px',
-        borderRadius: '1px',
         backgroundColor: 'white',
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-        transition: '0.3s'
+        transition: '0.3s',
+        borderRadius: ' 0 0 10% 10%',
 
 
 
@@ -30,13 +28,13 @@ const BoardData = ({data, position, players}) => {
     const styleName = {
         backgroundColor: data.color,
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-        borderRadius: '0x',
         fontSize: '10px',
         marginTop: '0px',
-    width: '100%',
+        width: '100%',
         height: '20%',
         border: 'hidden',
         textAlign: 'inherit',
+
 
 
     };
@@ -51,7 +49,7 @@ const BoardData = ({data, position, players}) => {
                         zIndex: '2',
                         marginTop: '2px',
                         left: '40%',
-                             }}>{player.name}</h4>
+                    }}>{player.name}</h4>
 
 
                 )
@@ -72,14 +70,14 @@ const BoardData = ({data, position, players}) => {
 
             {data.name === ' Chance ' &&
 
-                <div  style={{backgroundColor: '#F2F8F4'}}>
-            <img
-                  className={'chance'} alt={'chance'} src={require('../assests/chanceMonopoly.png')} />
-                  </div>
-                  }
+            <div  style={{backgroundColor: '#F2F8F4'}}>
+                <img
+                    className={'chance'} alt={'chance'} src={require('../assests/chanceMonopoly.png')} />
+            </div>
+            }
 
             {data.name === 'Free Parking' &&
-                <img className={'freeParking'} alt={'parking'} src={require('../assests/Free-parking.png')} />
+            <img className={'freeParking'} alt={'parking'} src={require('../assests/Free-parking.png')} />
             }
 
             {data.name === 'Community Chest' &&
@@ -106,44 +104,18 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps) (BoardData)
 
-// const properties = {
-//     parkLane: {
-//         purchased: false,
-//     },
-//     strand: {
-//         purchased: false,
-//     },
-//     mayfair: {
-//         purchased: true,
-//         owner: 'yasir'
-//     },
-// };
 
-//
-// // payload.property
-// const newPropeties = {
-//     ...properties,
-//     [payload.property]: {
-//         purchased: true,
-//         owner: 'yasir',
-//     }
-// }
-//
-// const player = {
-//         name: 'yasir',
-//         active: true,
-//         properties: ['mayfair'],
-//         cash: 500000000
-//     };
-//
-// const newPlayer = {
-//     ...player,
-//     properties: [...player.properties, payload.property],
-//     cash: player.cash - payload.price,
-// };
-//
+// {TO DO LIST}
 
-//
+
+//- unless double, roll once-
+//- players to be on outside of board - position will be : 'absolute' // parent relative,
+// -
+// -
+//- RENT ? -
+
+
+
 // const currentDicePosition = useSelector(state => state.diceReducer.dicePosition);
 // const currentProperty = useSelector(state => state.fullDataArray[currentDicePosition]);
 //

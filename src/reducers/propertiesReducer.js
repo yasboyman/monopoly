@@ -160,32 +160,19 @@ const initialState  =
          case 'PURCHASE_PROPERTY':
 
              const propertyID = action.payload.active_properties_data.id;
-             const playerOB = action.payload.active_Player_obj.map(x => x.name);
+             const playerName = action.payload.active_Player_obj.map(x => x.name);
              const propertyName = action.payload.active_properties_data.name;
              const objEntries = Object.entries(state);
 
-             if ( state[propertyName].purchased === false ) {
                  return {
                      ...state,
                      [propertyName]: {
                          purchased: true,
-                         owner: playerOB,
+                         owner: playerName,
                          id: propertyID
                      }
                  };
 
-             } else if (state[propertyName].purchased === true ) {
-                 alert('property has already been purchased')
-
-             } else {
-
-                 return state
-             }
-
-             return {
-                 ...state,
-
-             };
 
 default:
 
