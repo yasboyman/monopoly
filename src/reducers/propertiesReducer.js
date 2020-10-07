@@ -157,10 +157,6 @@ const initialState  =
 
      switch (action.type) {
 
-
-
-
-
          case 'PURCHASE_PROPERTY':
 
              const propertyID = action.payload.active_properties_data.id;
@@ -175,7 +171,6 @@ const initialState  =
                          purchased: true,
                          owner: playerOB,
                          id: propertyID
-
                      }
                  };
 
