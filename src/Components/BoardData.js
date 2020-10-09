@@ -34,6 +34,8 @@ const BoardData = ({data, position, players}) => {
         height: '20%',
         border: 'hidden',
         textAlign: 'inherit',
+        position: 'relative',
+        fontWeight: 'bold',
 
 
 
@@ -49,6 +51,11 @@ const BoardData = ({data, position, players}) => {
                         zIndex: '2',
                         marginTop: '2px',
                         left: '40%',
+                        animation: player.active? 'mymove 3s infinite': null,
+
+
+
+
                     }}>{player.name}</h4>
 
 
@@ -66,13 +73,14 @@ const BoardData = ({data, position, players}) => {
             {/*// renders the name of the player on the cards //*/}
             <div> {players.length > 1 && renderPlayers()} </div>
 
-            {data.price && <h3 style={{fontSize: '8px'}}>Price: £{data.price}</h3> }
+            {data.price && <h3 style={{fontSize: '8px', marginTop: '37px'}}>£{data.price}</h3> }
 
             {data.name === ' Chance ' &&
 
-            <div  style={{backgroundColor: '#F2F8F4'}}>
+            <div>
+
                 <img
-                    className={'chance'} alt={'chance'} src={require('../assests/chanceMonopoly.png')} />
+                    className={'chance'} alt={'chance'} src={require('../assests/monopoly-chance-question-mark.png')}/>
             </div>
             }
 
@@ -81,10 +89,21 @@ const BoardData = ({data, position, players}) => {
             }
 
             {data.name === 'Community Chest' &&
-            <img className={'communityChest'} alt={'chest'} src={require('../assests/chest.jpeg')} />
+            <img
+                style={{backgroundColor: 'white'} }
+                className={'communityChest'} alt={'chest'} src={require('../assests/chest.gif')} />
             }
 
 
+            {data.name === 'Jail' &&
+            <img className={'jail'} alt={'jail'} src={require('../assests/monopoly-prison-board.jpg')} />
+            }
+
+            {data.type == 'Station' &&
+            <img
+                style={{backgroundColor: 'white'}}
+                className={'station'} alt={'station'} src={require('../assests/trainStation.jpeg')} />
+            }
 
 
 
@@ -110,14 +129,13 @@ export default connect(mapStateToProps) (BoardData)
 
 //- unless double, roll once-
 //- players to be on outside of board - position will be : 'absolute' // parent relative,
-// -
-// -
-//- RENT ? -
+//- add images no background   **** DONE!!
+// - implement rent
+// - current player - money display in UI, mark on UI purchased property,
+// pass go get 200
+// income tax - reducer
+// title for prop bold  **** DONE!!
+// remove price, move  numbers to bottom,  ***** DONE!!
+// players color ... each player added to store
+    // change anywhere class to functional, useSelectors //
 
-
-
-// const currentDicePosition = useSelector(state => state.diceReducer.dicePosition);
-// const currentProperty = useSelector(state => state.fullDataArray[currentDicePosition]);
-//
-// const purchaseProperties = () => dispatch(purchasedPropertyAction({ property: currentProperty.name, buyer: 'yasir', price: currentProperty.price }));
-// // type: PURCHASE_PROPERTY

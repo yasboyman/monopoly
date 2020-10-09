@@ -11,16 +11,23 @@ const Dice = () => {
     const diceState1 = useSelector( state => state.playersReducer.dice1);
     const diceState2 = useSelector( state => state.playersReducer.dice2);
 
+
+
     return (
 
         <div className={'dice'}>
 
             <h1 className={'monopolyTitle'}>MONOPOLY</h1>
 
-
+            {/*<img*/}
+            {/*    // className={'monopolyTitle'} alt={'chance'} src={require('../assests/monopoly-logo.png')}/>*/}
                     <div >
-                        < img  onClick={ () => dispatch({type: 'ROLL_DICE'}) } className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
-                        <img  onClick={ () => dispatch({type: 'ROLL_DICE'}) } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
+
+
+                            < img  onClick={ () => dispatch({type: 'ROLL_DICE'}) } className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
+                            <img  onClick={ () => dispatch({type: 'ROLL_DICE'}) } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
+
+
 
                     </div>
         </div>

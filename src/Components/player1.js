@@ -26,24 +26,14 @@ class PlayerActiveButtons extends Component {
 //CURRENT DICE POSITION OF PLAYER
         const active_properties_info = players.map(player =>  ( player.active && player.position));
         const playerDicePosition = active_properties_info.toString().replace(/[^0-9]/g, '');
-
         const active_properties_data = dataArray[playerDicePosition];
 
-
-        const numbersNot = [ 1, 3 , 5 , 8 , 11 , 18 , 21 , 23 , 31 , 34 ,37 ,39];
 
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
             if (!currentProperty.purchased) return this.props.purchaseTing({active_Player_obj, active_properties_data});
             alert('property has already been purchased');
         };
-
-        // if(numbersNot.indexOf(playerDicePosition) == -1)
-        // {
-        //     console.log('yay')
-        // }
-        //
-        // console.log(numbersNot.indexOf(playerDicePosition));
 
 
         return (

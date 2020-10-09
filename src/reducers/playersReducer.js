@@ -41,6 +41,18 @@ const playersReducer  = (state =  initialState, action) => {
             const dice2 = Math.floor(Math.random() * 6 + 1);
             let totalDice = dice1 + dice2;
 
+            const player = state.players.map( player => player.active)
+
+            if(dice1 ===dice2){
+
+                console.log('its a double')
+            } else {
+
+                console.log(state.players.active)
+
+            }
+
+
 
             const players = state.players.map(player => {
                 const position = player.position + totalDice;
@@ -86,6 +98,8 @@ const playersReducer  = (state =  initialState, action) => {
             const priceOfProperty = action.payload.active_properties_data.price;   // grabs price from payload //
             const findActivePlayer = state.players.findIndex( player => player.active); // finds index of player that is active //
             console.log(findActivePlayer);
+
+
 
             const newPlayer = state.players.map((player) => {
                 if ( player.active) {
