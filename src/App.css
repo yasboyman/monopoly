@@ -126,7 +126,7 @@ top: 20%;
   color: white;
   padding-left: 2px;
   transform: rotate(-34deg);
-  z-index: 3;
+  z-index: 1;
   font-size: 100px;
   padding-right: 848px;
   right: -20%;
@@ -140,11 +140,21 @@ top: 20%;
   margin-top: 2%;
 }
 
-.jail {
+.goToJail {
 
   max-height: 90px;
   max-width: 80px;
   margin-top: 2%;
+}
+
+.jail {
+
+  max-height: 50px;
+  max-width: 100px;
+margin-right: 1px;
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .freeParking{
@@ -172,5 +182,12 @@ top: 20%;
   margin-right: 25px;
   margin-left: -15px;
   background-color: red;
+}
+
+.go {
+  max-height: 50px;
+  max-width: 90px ;
+  margin-top: -4%;
+  z-index: -2;
 }
 

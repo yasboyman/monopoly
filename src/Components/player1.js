@@ -15,9 +15,7 @@ class PlayerActiveButtons extends Component {
         const playerStateCopy = this.props.players;
 
 //DISPLAYS CURRENT ACTIVE PLAYER
-       const  currentPlayerName = () =>  players.map(player =>
-
-             (player.active === true  ? player.name : null));
+       const  currentPlayerName = () =>  players.map(player => (player.active === true  ? player.name : null));
 
 
 // OBJ OF CURRENT ACTIVE PLAYER DATA
@@ -43,11 +41,9 @@ class PlayerActiveButtons extends Component {
 
                  {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
                 { active_properties_data && active_properties_data.type == 'location'  ? <button
-                    onClick={handlePurchase}
+                    ref={'diceBtn'} onClick={handlePurchase}
                 > Buy Property </button> : null  }
-
                     <button onClick={this.props.turnEndedClicked}>End turn</button>
-
             </div>
         );
     };
@@ -70,8 +66,6 @@ const mapDispatchToProps = (dispatch) => {
 
         turnEndedClicked:  () => dispatch({type: 'END_PLAYER_TURN'}),
         purchaseTing: (payload) => dispatch({type: 'PURCHASE_PROPERTY', payload })
-
-
 
     }
 };

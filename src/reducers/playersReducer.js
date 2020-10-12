@@ -1,21 +1,20 @@
+import fullDataArrayReducer from "./fullDataArrayReducer";
 
-
-//
-// active: true
-// id: 1
-// money: 5000000
-// name: "a"
-// position: 0
-// properties: []
-// whoseTurn: ""
 
 const initialState ={
     players: [],
     dice1: 1,
     dice2: 1,
+    letDiceClickAgain: true
 };
 
+
+// const isPurchased = useSelector(state => state.propertiesData);
+
 const playersReducer  = (state =  initialState, action) => {
+
+
+
     switch (action.type) {
 
 
@@ -26,12 +25,9 @@ const playersReducer  = (state =  initialState, action) => {
             playersInfo[0].active = true;
 
             return {
-               ...state,
-                players: playersInfo
+                ...state,
+                players: playersInfo,
             };
-
-
-
 
 
 // sets player poisition //
@@ -40,17 +36,14 @@ const playersReducer  = (state =  initialState, action) => {
             const dice1 =  Math.floor(Math.random() * 6 + 1);
             const dice2 = Math.floor(Math.random() * 6 + 1);
             let totalDice = dice1 + dice2;
+            const playerPos = state.players.map( x => x.properties);
 
-            const player = state.players.map( player => player.active)
 
-            if(dice1 ===dice2){
+            console.log('find PROP', action.payload);
 
-                console.log('its a double')
-            } else {
 
-                console.log(state.players.active)
 
-            }
+
 
 
 
@@ -60,8 +53,8 @@ const playersReducer  = (state =  initialState, action) => {
                     return {
                         ...player,
                         position: position > 40 ?  position - 40 : position,
+                        money: position > 40 ?  player.money +200 : player.money,
                     }
-
                 }
                 return player;
             });
@@ -73,6 +66,8 @@ const playersReducer  = (state =  initialState, action) => {
                 players,
                 dice1,
                 dice2,
+                letDiceClickAgain: dice1.toString() === dice2.toString()
+
 
 
             };
@@ -88,6 +83,8 @@ const playersReducer  = (state =  initialState, action) => {
             return {
                 ...state,
                 players: newPlayers,
+                letDiceClickAgain: true
+
             };
 
 
@@ -99,22 +96,21 @@ const playersReducer  = (state =  initialState, action) => {
             const findActivePlayer = state.players.findIndex( player => player.active); // finds index of player that is active //
             console.log(findActivePlayer);
 
-
-
             const newPlayer = state.players.map((player) => {
                 if ( player.active) {
                     return {
                         ...player,
-                        money: player.money - parseFloat(priceOfProperty)
-                        }
+                        money: player.money - parseFloat(priceOfProperty),
+                        properties: [...player.properties, action.payload.active_properties_data.name]
                     }
+                }
                 return player
 
-                });
+            });
 
 
 
-                  // change state here
+            // change state here
 
 
 
@@ -129,13 +125,13 @@ const playersReducer  = (state =  initialState, action) => {
 
 
 
-                };
-
             };
+
+    };
 // how to add more info into object, how to input diceData//
 
-            return state;
-    };
+    return state;
+};
 
 
 

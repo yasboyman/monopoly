@@ -19,9 +19,6 @@ const BoardData = ({data, position, players}) => {
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
         transition: '0.3s',
         borderRadius: ' 0 0 10% 10%',
-
-
-
     };
 
     // sets the card title name along with Color of title
@@ -36,10 +33,8 @@ const BoardData = ({data, position, players}) => {
         textAlign: 'inherit',
         position: 'relative',
         fontWeight: 'bold',
-
-
-
     };
+
 
     const renderPlayers = () => {
         return players.map(player => {
@@ -52,9 +47,6 @@ const BoardData = ({data, position, players}) => {
                         marginTop: '2px',
                         left: '40%',
                         animation: player.active? 'mymove 3s infinite': null,
-
-
-
 
                     }}>{player.name}</h4>
 
@@ -95,14 +87,26 @@ const BoardData = ({data, position, players}) => {
             }
 
 
-            {data.name === 'Jail' &&
-            <img className={'jail'} alt={'jail'} src={require('../assests/monopoly-prison-board.jpg')} />
+            {data.name === 'Go to Jail' &&
+            <img className={'goToJail'} alt={'jail'} src={require('../assests/monopoly-prison-board.jpg')} />
             }
 
             {data.type == 'Station' &&
             <img
                 style={{backgroundColor: 'white'}}
                 className={'station'} alt={'station'} src={require('../assests/trainStation.jpeg')} />
+            }
+
+            {data.name == 'GO' &&
+            <img
+                style={{backgroundColor: 'white'}}
+                className={'go'} alt={'go'} src={require('../assests/go.gif')} />
+            }
+
+            {data.name == 'Jail' &&
+            <img
+                style={{backgroundColor: 'white'}}
+                className={'jail'} alt={'jail'} src={require('../assests/inJail.jpg')} />
             }
 
 
@@ -127,15 +131,15 @@ export default connect(mapStateToProps) (BoardData)
 // {TO DO LIST}
 
 
-//- unless double, roll once-
-//- players to be on outside of board - position will be : 'absolute' // parent relative,
-//- add images no background   **** DONE!!
+//- unless double, roll once-                                                                   **** DONE!!
+//- players to be on outside of board - position will be : 'absolute' // parent relative,       **** DONE!!
+//- add images no background                                                                    **** DONE!!
 // - implement rent
 // - current player - money display in UI, mark on UI purchased property,
-// pass go get 200
+// pass go get 200                                                                              **** DONE!!!
 // income tax - reducer
-// title for prop bold  **** DONE!!
-// remove price, move  numbers to bottom,  ***** DONE!!
+// title for prop bold                                                                          **** DONE!!
+// remove price, move  numbers to bottom,                                                       ***** DONE!!
 // players color ... each player added to store
     // change anywhere class to functional, useSelectors //
 
