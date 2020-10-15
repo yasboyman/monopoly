@@ -182,17 +182,11 @@ const mapStateToProps = (state) => ({
     dataArray: state.fullDataArray,
     dicePosition: state.diceReducer.dicePosition,
     players: state.playersReducer.players
-
-
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        diceClicked: () =>  dispatch(diceAction())    ,// using actions passing functions
-        addPlayersToStore: (players) => dispatch(submitPlayers(players)),
-    }
-};
-
-
+const mapDispatchToProps = (dispatch) => ({
+    diceClicked: () =>  dispatch(diceAction()),// using actions passing functions
+    addPlayersToStore: (players) => dispatch(submitPlayers(players)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps) (BoardContainer)
