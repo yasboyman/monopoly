@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import fullDataArrayReducer from "../reducers/fullDataArrayReducer";
+
 
 
 // RETURNS DICE IMAGES.......
@@ -12,8 +12,13 @@ const Dice = () => {
     const diceState1 = useSelector( state => state.playersReducer.dice1);
     const diceState2 = useSelector( state => state.playersReducer.dice2);
     const rollAgain = useSelector(state => state.playersReducer.letDiceClickAgain);
+    const playerPosition =  useSelector( state => state.playersReducer.players);
     const purchasedProperty = useSelector(state => state.propertiesData);
-    const propertyCardData = useSelector(state => state.fullDataArrayReducer);
+
+    const playerPOS = playerPosition.map(x => (x.active &&  x.position));
+
+    const propertyCardData = useSelector(state => state.fullDataArray[playerPOS[0]]);
+
 
 
     return (
@@ -28,12 +33,14 @@ const Dice = () => {
 
             {rollAgain === true ?
                     <div >
-                            < img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty, propertyCardData }) } className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
-                            <img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty, propertyCardData  }) } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
+                            < img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  })} className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
+                            <img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
 
                     </div>
 
                 : null}
+
+
         </div>
 
 

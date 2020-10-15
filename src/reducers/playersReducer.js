@@ -30,34 +30,45 @@ const playersReducer  = (state =  initialState, action) => {
             };
 
 
-// sets player poisition //
         case 'ROLL_DICE':
 
             const dice1 =  Math.floor(Math.random() * 6 + 1);
             const dice2 = Math.floor(Math.random() * 6 + 1);
             let totalDice = dice1 + dice2;
-            const playerPos = state.players.map( x => x.properties);
-
-
-            console.log('find PROP', action.payload);
-
-
-
-
-
+            const propertiesDataArray = Object.keys(action.payload);
+            let newPlayerPosition = null;
 
 
             const players = state.players.map(player => {
                 const position = player.position + totalDice;
+                newPlayerPosition = position > 40 ?  position - 40 : position;
                 if (player.active){
                     return {
                         ...player,
-                        position: position > 40 ?  position - 40 : position,
+                        position: newPlayerPosition,
                         money: position > 40 ?  player.money +200 : player.money,
                     }
                 }
                 return player;
             });
+
+            const purchased = propertiesDataArray.find(property =>
+                action.payload[property].purchased && action.payload[property].id === newPlayerPosition);
+            const purchasedPropertyObject = propertiesDataArray[purchased];
+
+            if(newPlayerPosition === purchasedPropertyObject.id) {
+                players.map( player => {
+                    if (player.active){
+                        return {
+                            ...player,
+                            money: player.money - purchasedPropertyObject.rent,
+                        }
+                    }
+                })
+            };
+
+
+            console.log('purchase', purchased);
 
 
 
@@ -84,7 +95,6 @@ const playersReducer  = (state =  initialState, action) => {
                 ...state,
                 players: newPlayers,
                 letDiceClickAgain: true
-
             };
 
 

@@ -12,7 +12,6 @@ class PlayerActiveButtons extends Component {
     render() {
         const {players, dataArray} = this.props;
 
-        const playerStateCopy = this.props.players;
 
 //DISPLAYS CURRENT ACTIVE PLAYER
        const  currentPlayerName = () =>  players.map(player => (player.active === true  ? player.name : null));
@@ -27,6 +26,8 @@ class PlayerActiveButtons extends Component {
         const active_properties_data = dataArray[playerDicePosition];
 
 
+
+
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
             if (!currentProperty.purchased) return this.props.purchaseTing({active_Player_obj, active_properties_data});
@@ -37,11 +38,15 @@ class PlayerActiveButtons extends Component {
         return (
 
             <div className={'players'}>
+
+                <dice
+                     data={active_properties_data}
+                />
                  { {currentPlayerName} && <h5> Current Player : {currentPlayerName()} </h5>}
 
                  {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
                 { active_properties_data && active_properties_data.type == 'location'  ? <button
-                    ref={'diceBtn'} onClick={handlePurchase}
+                    onClick={handlePurchase}
                 > Buy Property </button> : null  }
                     <button onClick={this.props.turnEndedClicked}>End turn</button>
             </div>
