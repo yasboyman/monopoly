@@ -45,8 +45,12 @@ const BoardData = ({data, position, players}) => {
                         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
                         zIndex: '2',
                         marginTop: '2px',
-                        left: '40%',
                         animation: player.active? 'mymove 3s infinite': null,
+                        borderRadius:'30%',
+                        padding:' 10% 10% 10% 10px',
+                        width: 'fit-content',
+                        paddingLeft: '6%',
+                        paddingTop: '2%',
 
                     }}>{player.name}</h4>
 
@@ -134,7 +138,7 @@ export default connect(mapStateToProps) (BoardData)
 //- unless double, roll once-                                                                   **** DONE!!
 //- players to be on outside of board - position will be : 'absolute' // parent relative,       **** DONE!!
 //- add images no background                                                                    **** DONE!!
-// - implement rent
+// - implement rent                                                                              **** DONE!!
 // - current player - money display in UI, mark on UI purchased property,
 // pass go get 200                                                                              **** DONE!!!
 // income tax - reducer
@@ -142,4 +146,11 @@ export default connect(mapStateToProps) (BoardData)
 // remove price, move  numbers to bottom,                                                       ***** DONE!!
 // players color ... each player added to store
     // change anywhere class to functional, useSelectors //
+// player data on main board  data price properties with color of propers cards divs
 
+// fix dice  z index
+// images fix
+// player names more cirlly- radius               DONE!!!
+// apppeal to buyer to puchase, cost preview
+// h1 to pay rent how much lost
+// dice animation

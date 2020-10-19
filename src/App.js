@@ -4,6 +4,7 @@ import BoardContainer from "./Components/BoardContainer";
 import Dice from "./Components/dice";
 // import PurchasedProperty from "./Components/PurchasedProperty";
 import PlayerActiveButtons from './Components/player1'
+import PlayersInfoUI from "./Components/playersInfoUI";
 
 
 
@@ -16,6 +17,7 @@ class App extends Component {
         <BoardContainer />
         <PlayerActiveButtons />
         <Dice/>
+          <PlayersInfoUI />
         <>
           {/*<PurchasedProperty/>*/}
         </>

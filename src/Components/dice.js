@@ -19,6 +19,8 @@ const Dice = () => {
 
     const propertyCardData = useSelector(state => state.fullDataArray[playerPOS[0]]);
 
+    const  playAudio  =  new Audio('http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV');
+
 
 
     return (
@@ -33,8 +35,10 @@ const Dice = () => {
 
             {rollAgain === true ?
                     <div >
-                            < img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  })} className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
-                            <img  onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
+
+                            < img
+                                onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) && playAudio.play()} className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
+                            <img onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) && playAudio.play() } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
 
                     </div>
 

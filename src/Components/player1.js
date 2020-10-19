@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import BoardData from "./BoardData";
+import PlayersInfoUI from "./playersInfoUI";
 
  //this component will grab data, and allow player to purchase using onClick //
 
@@ -26,29 +27,60 @@ class PlayerActiveButtons extends Component {
         const active_properties_data = dataArray[playerDicePosition];
 
 
+        const propertyName = active_properties_data && active_properties_data.name;
+        const priceOfProperty = active_properties_data && active_properties_data.price;
+
+
+
+        console.log('active_Player_obj',active_Player_obj);
+
 
 
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
-            if (!currentProperty.purchased) return this.props.purchaseTing({active_Player_obj, active_properties_data});
+            console.log(currentProperty);
+            if (!currentProperty.purchased) return  playAudioBuy.play() && this.props.purchaseTing({active_Player_obj, active_properties_data});
             alert('property has already been purchased');
         };
 
 
+        const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav')
+
+            const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3')
+
+
         return (
 
+
             <div className={'players'}>
+
+
+
+                { {currentPlayerName} && <h5> Current Player : {currentPlayerName()} </h5>}
+
+                {active_properties_data &&
+                <div className={'propertyList'}>
+                    <ul>
+                        Property Details:
+                        <li>{propertyName}</li>
+                        <li>  {priceOfProperty &&  `£ ${priceOfProperty}`} </li>
+
+                    </ul>
+                </div> }
 
                 <dice
                      data={active_properties_data}
                 />
-                 { {currentPlayerName} && <h5> Current Player : {currentPlayerName()} </h5>}
+
 
                  {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
                 { active_properties_data && active_properties_data.type == 'location'  ? <button
-                    onClick={handlePurchase}
+                    onClick={ handlePurchase }
+                    className={'purchaseButton'}
                 > Buy Property </button> : null  }
-                    <button onClick={this.props.turnEndedClicked}>End turn</button>
+                    <button
+                        className={'purchaseButton'}
+                        onClick={ () => endPlayerTurn.play() && this.props.turnEndedClicked() }>End turn</button>
             </div>
         );
     };
