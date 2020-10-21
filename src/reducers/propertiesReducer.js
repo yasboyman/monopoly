@@ -190,6 +190,7 @@ const initialState  =
              const propertyID = action.payload.active_properties_data.id;
              const playerName = action.payload.active_Player_obj.map(x => x.name);
              const propertyName = action.payload.active_properties_data.name;
+             const rentOfProp = action.payload.active_properties_data.rent;
 
 
                  return {
@@ -197,7 +198,8 @@ const initialState  =
                      [propertyName]: {
                          purchased: true,
                          owner: playerName,
-                         id: propertyID
+                         id: propertyID,
+                         rent: rentOfProp
                      }
                  };
 

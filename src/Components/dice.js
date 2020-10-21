@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+// import {ONEDICE} from '../assests/sounds/ONEDICE.wav'
 
 
 
@@ -12,14 +13,14 @@ const Dice = () => {
     const diceState1 = useSelector( state => state.playersReducer.dice1);
     const diceState2 = useSelector( state => state.playersReducer.dice2);
     const rollAgain = useSelector(state => state.playersReducer.letDiceClickAgain);
-    const playerPosition =  useSelector( state => state.playersReducer.players);
     const purchasedProperty = useSelector(state => state.propertiesData);
 
-    const playerPOS = playerPosition.map(x => (x.active &&  x.position));
 
-    const propertyCardData = useSelector(state => state.fullDataArray[playerPOS[0]]);
 
-    const  playAudio  =  new Audio('http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV');
+
+    const  playAudio  =  new Audio( 'http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV');
+
+    // http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV
 
 
 

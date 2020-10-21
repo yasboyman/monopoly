@@ -34,7 +34,7 @@ const playersReducer  = (state =  initialState, action) => {
             const dice1 =  Math.floor(Math.random() * 6 + 1);
             const dice2 = Math.floor(Math.random() * 6 + 1);
             let totalDice = dice1 + dice2;
-            const propertiesDataArray = Object.keys(action.payload);
+
             let newPlayerPosition = null;
 
             const players = state.players.map(player => {
@@ -50,22 +50,28 @@ const playersReducer  = (state =  initialState, action) => {
                 return player;
             });
 
-            const purchasedPropertyName = propertiesDataArray.find(
-              property =>action.payload[property].purchased && action.payload[property].id === newPlayerPosition
-            );
 
-            const purchasedPropertyObject = action.payload[purchasedPropertyName];
+            const propertiesDataArray = Object.keys(action.payload);
+            const purchasedPropertyName = propertiesDataArray.find(property =>action.payload[property].purchased &&  action.payload[property].id === newPlayerPosition + 1);
+            const purchasedPropertyObject =  action.payload[purchasedPropertyName];
 
-            if (purchasedPropertyObject) {
-                players.map(player => {
+            if ( purchasedPropertyName) {
+                alert('treus');
+
+                console.log('PLAYERS',players)
+
+               players.map(player => {
                     if (player.active) {
-                        return {
+
+                         return {
                             ...player,
-                            money: player.money - purchasedPropertyObject.rent,
+                            money: player.money  - purchasedPropertyObject.rent,
                         }
+
                     }
 
                     if (player.name === purchasedPropertyObject.owner){
+
                         return {
                             ...player,
                             money: player.money + purchasedPropertyObject.rent,
@@ -73,7 +79,10 @@ const playersReducer  = (state =  initialState, action) => {
                     }
 
                     return player
-                });
+                }
+
+
+                );
             }
 
             return {
@@ -108,7 +117,6 @@ const playersReducer  = (state =  initialState, action) => {
         case 'PURCHASE_PROPERTY':
             const priceOfProperty = action.payload.active_properties_data.price;   // grabs price from payload //
             const findActivePlayer = state.players.findIndex( player => player.active); // finds index of player that is active //
-            console.log(findActivePlayer);
 
             const newPlayer = state.players.map((player) => {
                 if ( player.active) {

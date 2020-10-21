@@ -17,7 +17,7 @@ class App extends Component {
         <BoardContainer />
         <PlayerActiveButtons />
         <Dice/>
-          <PlayersInfoUI />
+          {/*<PlayersInfoUI />*/}
         <>
           {/*<PurchasedProperty/>*/}
         </>

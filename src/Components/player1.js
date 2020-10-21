@@ -32,21 +32,21 @@ class PlayerActiveButtons extends Component {
 
 
 
-        console.log('active_Player_obj',active_Player_obj);
+
+
 
 
 
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
-            console.log(currentProperty);
-            if (!currentProperty.purchased) return  playAudioBuy.play() && this.props.purchaseTing({active_Player_obj, active_properties_data});
+            if (!currentProperty.purchased) return  this.props.purchaseTing({active_Player_obj, active_properties_data}) && playAudioBuy.play() ;
             alert('property has already been purchased');
         };
 
 
-        const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav')
+        const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
 
-            const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3')
+            // const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
 
 
         return (
@@ -65,6 +65,7 @@ class PlayerActiveButtons extends Component {
                         <li>{propertyName}</li>
                         <li>  {priceOfProperty &&  `£ ${priceOfProperty}`} </li>
 
+
                     </ul>
                 </div> }
 
@@ -80,7 +81,7 @@ class PlayerActiveButtons extends Component {
                 > Buy Property </button> : null  }
                     <button
                         className={'purchaseButton'}
-                        onClick={ () => endPlayerTurn.play() && this.props.turnEndedClicked() }>End turn</button>
+                        onClick={ () =>  this.props.turnEndedClicked() }>End turn</button>
             </div>
         );
     };
