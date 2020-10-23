@@ -57,10 +57,6 @@ const playersReducer  = (state =  initialState, action) => {
 
 
             if (purchasedPropertyName) {
-                console.log('FIREEEEEEEEEE TING')
-                console.log('purchasedPropertyObject', purchasedPropertyObject)
-                console.log('player', purchasedPropertyObject)
-debugger
                 players = players.map((player) => {
                     if (player.active) {
                         return {
@@ -71,7 +67,6 @@ debugger
                     }
 
                     if (player.name === purchasedPropertyObject.owner.toString()) {
-                        console.log('FIREEEEEEEEEE')
                         return {
                             ...player,
                             money: player.money + purchasedPropertyObject.rent,
