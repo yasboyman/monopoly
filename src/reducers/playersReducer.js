@@ -37,9 +37,7 @@ const playersReducer  = (state =  initialState, action) => {
 
             let newPlayerPosition = null;
 
-
-
-            const players = state.players.map(player => {
+            let players = state.players.map(player => {
                 const position = player.position + totalDice;
                 newPlayerPosition = position > 40 ?  position - 40 : position;
                 if (player.active){
@@ -53,19 +51,14 @@ const playersReducer  = (state =  initialState, action) => {
                 return player;
             });
 
-
             const propertiesDataArray = Object.keys(action.payload);
             const purchasedPropertyName = propertiesDataArray.find(property =>action.payload[property].purchased &&  action.payload[property].id - 1 === newPlayerPosition);
             const purchasedPropertyObject =  action.payload[purchasedPropertyName];
 
 
             if (purchasedPropertyName) {
-                   players.map((player) => {
+                players = players.map((player) => {
                     if (player.active) {
-                        alert('player active trueer');
-                        console.log('TENANT ', player);
-                        console.log('TENANT MONEY', player.money);
-
                         return {
                             ...player,
                             money: player.money - purchasedPropertyObject.rent,
@@ -74,10 +67,6 @@ const playersReducer  = (state =  initialState, action) => {
                     }
 
                     if (player.name === purchasedPropertyObject.owner.toString()) {
-                        alert('player name === purchasedPropertyObject.owner trueer');
-                        console.log('OWNER NAME', player);
-                        console.log('OWNER MONEY', player.money);
-
                         return {
                             ...player,
                             money: player.money + purchasedPropertyObject.rent,
@@ -90,14 +79,10 @@ const playersReducer  = (state =  initialState, action) => {
 
             return {
                 ...state,
-              players,
+                players,
                 dice1,
                 dice2,
                 letDiceClickAgain: dice1.toString() === dice2.toString(),
-
-
-
-
             };
 
 
