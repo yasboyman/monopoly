@@ -37,6 +37,8 @@ const playersReducer  = (state =  initialState, action) => {
 
             let newPlayerPosition = null;
 
+
+
             const players = state.players.map(player => {
                 const position = player.position + totalDice;
                 newPlayerPosition = position > 40 ?  position - 40 : position;
@@ -47,30 +49,34 @@ const playersReducer  = (state =  initialState, action) => {
                         money: position > 40 ?  player.money +200 : player.money,
                     }
                 }
+
                 return player;
             });
 
 
             const propertiesDataArray = Object.keys(action.payload);
-            const purchasedPropertyName = propertiesDataArray.find(property =>action.payload[property].purchased &&  action.payload[property].id === newPlayerPosition + 1);
+            const purchasedPropertyName = propertiesDataArray.find(property =>action.payload[property].purchased &&  action.payload[property].id - 1 === newPlayerPosition);
             const purchasedPropertyObject =  action.payload[purchasedPropertyName];
 
-            if ( purchasedPropertyName) {
-                alert('treus');
 
-                console.log('PLAYERS',players)
-
-               players.map(player => {
+            if (purchasedPropertyName) {
+                   players.map((player) => {
                     if (player.active) {
+                        alert('player active trueer');
+                        console.log('TENANT ', player);
+                        console.log('TENANT MONEY', player.money);
 
-                         return {
+                        return {
                             ...player,
-                            money: player.money  - purchasedPropertyObject.rent,
+                            money: player.money - purchasedPropertyObject.rent,
                         }
 
                     }
 
-                    if (player.name === purchasedPropertyObject.owner){
+                    if (player.name === purchasedPropertyObject.owner.toString()) {
+                        alert('player name === purchasedPropertyObject.owner trueer');
+                        console.log('OWNER NAME', player);
+                        console.log('OWNER MONEY', player.money);
 
                         return {
                             ...player,
@@ -79,18 +85,16 @@ const playersReducer  = (state =  initialState, action) => {
                     }
 
                     return player
-                }
-
-
-                );
+                })
             }
 
             return {
                 ...state,
-                players,
+              players,
                 dice1,
                 dice2,
-                letDiceClickAgain: dice1.toString() === dice2.toString()
+                letDiceClickAgain: dice1.toString() === dice2.toString(),
+
 
 
 

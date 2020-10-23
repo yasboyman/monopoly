@@ -144,7 +144,12 @@ top: 20%;
 
   max-height: 90px;
   max-width: 80px;
-  margin-top: 2%;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  flex: fit-content;
+margin-top: 5px;
+  margin-left: 2%;
 }
 
 .jail {
@@ -155,23 +160,35 @@ margin-right: 1px;
   position: absolute;
   display: flex;
   flex-direction: row-reverse;
+
 }
 
 .freeParking{
 
   max-height: 60px;
   max-width: 80px;
-  margin-top: 6%;
-  padding-bottom: 15px;
+  position: absolute;
+
+  display: flex;
+  margin-left: 2%;
+  margin-top: 8px;
+  left: 1px;
+
+
 }
 
 .communityChest {
   max-height: 45px;
   max-width: 80px;
-  margin-top: -2%;
-  padding-bottom: 0px;
   transition: 0.3s;
-  z-index: -2;
+  position: absolute;
+  display: flex;
+  margin-left: 2.5%;
+  margin-top: 5px;
+
+
+
+
 }
 
 .station {
@@ -185,11 +202,12 @@ margin-right: 1px;
 }
 
 .go {
-  max-height: 40px;
-  max-width: 90px ;
-  margin-top: 0%;
-  z-index: 0;
-  position: absolute
+  max-height: 50px;
+  max-width: 100px ;
+  position: absolute;
+margin-top: 0.2%;
+  display: flex;
+  margin-left: 40px;
 }
 
 .purchaseButton{

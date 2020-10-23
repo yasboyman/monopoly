@@ -43,14 +43,17 @@ const BoardData = ({data, position, players}) => {
                     <h4 style={{
                         backgroundColor: player.active ? 'yellow' : 'white smoke',
                         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-                        zIndex: '2',
+                        zIndex: '99  !important;',
                         marginTop: '2px',
                         animation: player.active? 'mymove 3s infinite': null,
-                        borderRadius:'30%',
-                        padding:' 10% 10% 10% 10px',
-                        width: 'fit-content',
-                        paddingLeft: '6%',
-                        paddingTop: '2%',
+                        borderRadius:'10%',
+                        // padding:' 10% 10% 10% 10px',
+                        width: '25px',
+                        height: '25px',
+                        display: 'flex',
+                        position: 'absolute',
+                        maxWidth: '10px',
+                        maxHeight: '10px'
 
                     }}>{player.name}</h4>
 
@@ -67,7 +70,7 @@ const BoardData = ({data, position, players}) => {
             <header style={styleName}> {data.name} </header>
 
             {/*// renders the name of the player on the cards //*/}
-            <div> {players.length > 1 && renderPlayers()} </div>
+            <div> {renderPlayers() && renderPlayers()} </div>
 
             {data.price && <h3 style={{fontSize: '8px', marginTop: '37px'}}>£{data.price}</h3> }
 
