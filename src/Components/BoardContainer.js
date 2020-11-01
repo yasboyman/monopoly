@@ -73,10 +73,34 @@ class BoardContainer extends Component {
             alignItems:'flex-end', height: '80%', padding: '1px',}}> {places} </div>
     };
 
+
+
+     randomColorGenerator = () => {
+
+        // return  `hsla(${Math.random() * 360}, 71%, 46%)`;
+
+         // 360°, 71%, 46%
+         //
+         let letters = '0123456789ABCDEF';
+         let color = '#';
+
+
+         for(let i = 0 ; i < 6; i++){
+
+             color += letters[Math.floor(Math.random() * 16)];
+
+         }
+
+         return color
+
+    };
+
+
     // after submitting, removes input box  && dispatches action - moving this state data into store //
 
     onFinish = () => {
         this.setState({ showPlayersPrompt: false });
+        console.log('state player colors:: ',this.state.players.color);
         this.props.addPlayersToStore(this.state.players);
         alert('lets Play! click on the dice to get rolling!');
     };
@@ -98,6 +122,9 @@ class BoardContainer extends Component {
         const { playerName, players } = this.state;
 
 
+
+
+
         this.setState({
             players: [...players,
                 {
@@ -107,6 +134,7 @@ class BoardContainer extends Component {
                     money: 5000000,
                     active: false,
                     position: 0,
+                    color: this.randomColorGenerator(),
                 } ], playerName: ''  })
     };
 
@@ -134,8 +162,8 @@ class BoardContainer extends Component {
           <div style={{ width:'100%', position: 'relative', backgroundColor: 'brown', height: '100%', } }>
               {/*window.innerHeight,this was instead of height 100%*/}
               {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
-                  width: '400px', height: '300px', backgroundColor: "darkRed", top: '10%', position: 'absolute',
-                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '6px', padding: '20px', fontSize: '24px',}}>
+                  width: '400px', height: '300px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
+                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px', fontSize: '24px',}}>
 
 
                   <form onSubmit={this.addPlayer}>
@@ -159,7 +187,7 @@ class BoardContainer extends Component {
 
                   <button style={{ width: '100px'}} onClick={this.onFinish}>Finished </button>
 
-                  {/*<img className={'monopolyMan'} alt={'monoMan'} src={require('../assests/monoPolyMan.png')} />*/}
+
 
               </div> }
               {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
@@ -167,7 +195,7 @@ class BoardContainer extends Component {
 
 
               {this.renderBoardTop()}
-              <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%' }}>
+              <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: '#902b00' }}>
                   {this.renderBoardLeft()}
                   {this.renderBoardRight()}
               </div>

@@ -35,25 +35,26 @@ const BoardData = ({data, position, players}) => {
         fontWeight: 'bold',
     };
 
-
     const renderPlayers = () => {
         return players.map(player => {
             if (player.position === data.id -1){
                 return (
                     <h4 style={{
-                        backgroundColor: player.active ? 'yellow' : 'white smoke',
+                        // backgroundColor: player.active ? 'yellow' : 'white smoke',
+
+                        backgroundColor: player.color,
                         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
                         zIndex: '99  !important;',
-                        marginTop: '2px',
+                        paddingTop: '10px',
                         animation: player.active? 'mymove 3s infinite': null,
-                        borderRadius:'10%',
+                        borderRadius:'30%',
                         // padding:' 10% 10% 10% 10px',
                         width: '25px',
                         height: '25px',
-                        display: 'flex',
                         position: 'absolute',
-                        maxWidth: '10px',
-                        maxHeight: '10px'
+                        maxWidth: '25px',
+                        maxHeight: '25px'
+
 
                     }}>{player.name}</h4>
 
@@ -135,7 +136,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps) (BoardData)
 
 
-// {TO DO LIST}
+// {TO DO LIST}  //
 
 
 //- unless double, roll once-                                                                   **** DONE!!
@@ -147,9 +148,10 @@ export default connect(mapStateToProps) (BoardData)
 // income tax - reducer
 // title for prop bold                                                                          **** DONE!!
 // remove price, move  numbers to bottom,                                                       ***** DONE!!
-// players color ... each player added to store
+// players color ... each player added to store                                                 *****DONE!!!
     // change anywhere class to functional, useSelectors //
-// player data on main board  data price properties with color of propers cards divs
+// player data on main board  data price properties with color of propers cards divs           ******DONE!!!!
+
 
 // fix dice  z index
 // images fix

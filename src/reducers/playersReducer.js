@@ -1,11 +1,14 @@
 import fullDataArrayReducer from "./fullDataArrayReducer";
+import React from "react";
+import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 
 const initialState ={
     players: [],
     dice1: 1,
     dice2: 1,
-    letDiceClickAgain: true
+    letDiceClickAgain: true,
+    popUpBox: false,
 };
 
 
@@ -56,26 +59,53 @@ const playersReducer  = (state =  initialState, action) => {
             const purchasedPropertyObject =  action.payload[purchasedPropertyName];
 
 
+
             if (purchasedPropertyName) {
+                alert('RENT BITCH');
+
                 players = players.map((player) => {
                     if (player.active) {
+
                         return {
                             ...player,
                             money: player.money - purchasedPropertyObject.rent,
+                            popUpBox: true
+
+
                         }
 
                     }
+
 
                     if (player.name === purchasedPropertyObject.owner.toString()) {
                         return {
                             ...player,
                             money: player.money + purchasedPropertyObject.rent,
+                            popUpBox: true
                         }
+
                     }
 
+
                     return player
-                })
+                });
+
+
+
+
             }
+
+            if(purchasedPropertyName) {
+
+                return {
+                    ...state,
+                    popUpBox: true
+                };
+            }
+
+
+
+
 
             return {
                 ...state,
@@ -83,6 +113,8 @@ const playersReducer  = (state =  initialState, action) => {
                 dice1,
                 dice2,
                 letDiceClickAgain: dice1.toString() === dice2.toString(),
+
+
             };
 
 
@@ -137,6 +169,14 @@ const playersReducer  = (state =  initialState, action) => {
 
 
             };
+
+        case 'BYEBYE':
+
+            return {
+                ...state,
+
+                popUpBox: false
+            }
 
     };
 // how to add more info into object, how to input diceData//

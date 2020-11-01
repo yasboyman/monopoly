@@ -29,6 +29,7 @@ class PlayerActiveButtons extends Component {
 
         const propertyName = active_properties_data && active_properties_data.name;
         const priceOfProperty = active_properties_data && active_properties_data.price;
+        const colorOfProperty = active_properties_data && active_properties_data.color;
 
 
 
@@ -39,7 +40,7 @@ class PlayerActiveButtons extends Component {
 
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
-            if (!currentProperty.purchased) return  this.props.purchaseTing({active_Player_obj, active_properties_data}) && playAudioBuy.play() ;
+            if (!currentProperty.purchased) return  this.props.purchaseTing({active_Player_obj, active_properties_data, colorOfProperty}) && playAudioBuy.play() ;
             alert('property has already been purchased');
         };
 
