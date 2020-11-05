@@ -17,8 +17,9 @@ const BoardData = ({data, position, players}) => {
         margin: '1px',
         backgroundColor: 'white',
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-        transition: '0.3s',
         borderRadius: ' 0 0 10% 10%',
+
+
     };
 
     // sets the card title name along with Color of title
@@ -49,10 +50,9 @@ const BoardData = ({data, position, players}) => {
                         animation: player.active? 'mymove 3s infinite': null,
                         borderRadius:'30%',
                         // padding:' 10% 10% 10% 10px',
-                        width: '25px',
                         height: '25px',
                         position: 'absolute',
-                        maxWidth: '25px',
+                      width: 'auto',
                         maxHeight: '25px'
 
 
@@ -65,7 +65,7 @@ const BoardData = ({data, position, players}) => {
     };
 
     return (
-        <div style={style}>
+        <div  className={'cards'} style={style}>
 
 
             <header style={styleName}> {data.name} </header>

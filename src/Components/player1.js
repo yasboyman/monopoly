@@ -30,6 +30,7 @@ class PlayerActiveButtons extends Component {
         const propertyName = active_properties_data && active_properties_data.name;
         const priceOfProperty = active_properties_data && active_properties_data.price;
         const colorOfProperty = active_properties_data && active_properties_data.color;
+        const rentOfProperty = active_properties_data && active_properties_data.rent;
 
 
 
@@ -57,32 +58,39 @@ class PlayerActiveButtons extends Component {
 
 
 
-                { {currentPlayerName} && <h5> Current Player : {currentPlayerName()} </h5>}
+                { {active_properties_data} && <h5> Current Player : {currentPlayerName()} </h5>}
 
                 {active_properties_data &&
                 <div className={'propertyList'}>
-                    <ul>
-                        Property Details:
-                        <li>{propertyName}</li>
-                        <li>  {priceOfProperty &&  `£ ${priceOfProperty}`} </li>
+
+                    {{propertyName} &&  <h5> Property Details:  </h5>}
+                        <h5>{propertyName && propertyName}</h5>
+                        <h5>  {priceOfProperty &&  `£ ${priceOfProperty}`} </h5>
+                    <h5>  {rentOfProperty &&  `£ ${rentOfProperty}`} </h5>
 
 
-                    </ul>
+
+
+
                 </div> }
 
-                <dice
-                     data={active_properties_data}
-                />
 
 
-                 {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
-                { active_properties_data && active_properties_data.type == 'location'  ? <button
-                    onClick={ handlePurchase }
-                    className={'purchaseButton'}
-                > Buy Property </button> : null  }
+
+
+                <div className={'purchaseButton'}>
+                    {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
+                    { active_properties_data && active_properties_data.type == 'location'  ? <button
+                        onClick={ handlePurchase }
+                        className={'purchaseButton'}
+                    > Buy Property </button> : null  }
                     <button
                         className={'purchaseButton'}
                         onClick={ () =>  this.props.turnEndedClicked() }>End turn</button>
+
+                </div>
+
+
             </div>
         );
     };

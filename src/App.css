@@ -56,6 +56,7 @@ top: 20%;
   margin-left: 560px;
   overflow: hidden;
 
+
   /*width: 400px;*/
   /*height: 280px;*/
 
@@ -66,14 +67,51 @@ top: 20%;
   max-width: 80px;
   width: 100%;
   border: solid red 1px;
+
 }
 
-.diceImages1 {
+.diceImages {
   max-height: 80px;
   max-width: 80px;
   width: 100%;
-  border: solid red 1px;
+  height: 100%;
+  border: solid black 1px;
+
+
 }
+
+.diceImages1{
+  max-height: 80px;
+  max-width: 80px;
+  width: 100%;
+  height: 100%;
+  padding: 29px;
+  animation-name: dices;
+
+
+}
+
+@keyframes  rotate-scale-up-diag-2{
+  0% {
+    transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+    opacity: 1;
+  ;
+  }
+  50% {
+    transform: scale(1.4) rotate3d(-1, 1, 0, 180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
 
 .monopolyMan{
   max-height: 150px;
@@ -87,13 +125,11 @@ top: 20%;
 
 .players {
   position: absolute;
-  top: 60%;
+  top: 39%;
   margin-left: 68%;
   /*background-color: transparent;*/
-  -moz-transition: all 0.5s ease-in;
-  -o-transition: all 0.5s ease-in;
-  -webkit-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;
+
+  transition: transform .2s;
   color: white;
   padding: 20px;
   background: transparent;
@@ -122,20 +158,21 @@ top: 20%;
 /*  z-index: 5;*/
 /*}*/
 
-.monopolyTitle {
-  display: block;
-  position: fixed;
-  font-weight: 300;
-  -webkit-transform: scale(2,1);
-  margin: -70px;
-  color: white;
-  transform: rotate(-34deg);
-  z-index: 1;
-  font-size: 100px;
-  padding-right: 848px;
-  right: -20%;
 
-}
+ .monopolyTitle {
+
+   display: block;
+   position: fixed;
+   font-weight: 300;
+   -webkit-transform: scale(2,1);
+   margin: -58px;
+   color: white;
+   transform: rotate(-34deg);
+   font-size: 120px;
+   right: 30%;
+   top: 46%;
+ }
+
 
 
 .chance {
@@ -218,27 +255,36 @@ margin-top: 0.2%;
   text-align: center;
   width: 87px;
   height: 50px;
-  border-radius: 10%;
-  background-color: wheat;
-  border: solid 1px black;
-  font-weight: bold;
+  background-color: wheat;font-weight: bold;
+  /*transition: transform .2s;*/
+  border-radius: 20px;
 }
 
-.propertyList   {
-
-
-
-
+.purchaseButton :hover {
+  transform: scale(1.1);
 }
 
-.playerInfoUI{
+
+
+
+.playerInfoUI {
   width: 200px;
-  height: 400px;
+  height: 300px;
 position: absolute;
   text-align: center;
   top: 20%;
   margin-left: 15%;
   border-radius: 10px;
-
+  background-color: seashell;
+  border: solid  0.5px black;
 }
+.cards{
+  transition: transform .2s; /* Animation */
+}
+
+.cards:hover {
+
+  transform: scale(1.1);
+}
+
 

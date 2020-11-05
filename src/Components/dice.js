@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
-// import {ONEDICE} from '../assests/sounds/ONEDICE.wav'
 
 
 
@@ -15,12 +14,17 @@ const Dice = () => {
     const rollAgain = useSelector(state => state.playersReducer.letDiceClickAgain);
     const purchasedProperty = useSelector(state => state.propertiesData);
 
-
-
-
     const  playAudio  =  new Audio( 'http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV');
 
-    // http://cd.textfiles.com/itcontinues/WIN/YTB22/ONEDICE.WAV
+    const [diceRoll, setCount] = useState({diceRoll: false});
+
+
+
+    console.log('DI',diceRoll)
+
+    // console.log('ROLL AGAIN', rollAgain)
+
+
 
 
 
@@ -28,22 +32,64 @@ const Dice = () => {
 
         <div className={'dice'}>
 
+
             <h1 className={'monopolyTitle'}>MONOPOLY</h1>
 
-            {/*<img*/}
-            {/*    // className={'monopolyTitle'} alt={'chance'} src={require('../assests/monopoly-logo.png')}/>*/}
+            { /*/    rollAgain Boolean  - true once end turn clicked- avoids repeat dice click & deals with animation style below   /*/ }
+
+            { rollAgain ?
 
 
-            {rollAgain === true ?
-                    <div >
+                <div>
+                    < img
 
-                            < img
-                                onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) && playAudio.play()} className={'diceImages1'} alt={'dice'} src={require(`../assests/Dicey-${diceState1}.png`)} />
-                            <img onClick={ () => dispatch({type: 'ROLL_DICE', payload: purchasedProperty  }) && playAudio.play() } className={'diceImages'} alt={'dice'} src={require(`../assests/Dicey-${diceState2}.png`)} />
+                        onClick={() => dispatch({
+                            type: 'ROLL_DICE',
+                            payload: purchasedProperty
+                        }) && setCount( {diceRoll: true}) && playAudio.play()  }
 
-                    </div>
+                        className={'diceImages1'} alt={'dice'}
+                        style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
+                        onAnimationEnd={ () => setCount( {diceRoll: false}) }
+                        src={require(`../assests/Dice-${diceState1}.svg`)}/>
 
-                : null}
+                    <img
+                        onClick={() => dispatch({
+                            type: 'ROLL_DICE',
+                            payload: purchasedProperty
+                        }) && setCount ({diceRoll: true}) && playAudio.play()}
+
+                        className={diceRoll ? 'diceImages1' : 'diceImages'} alt={'dice'}
+                        style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
+                        onAnimationEnd={ () => setCount({diceRoll: false}) }
+                        src={require(`../assests/Dice-${diceState2}.svg`)}/>
+                </div>
+
+
+                :
+
+                <div>
+                    < img
+
+                        className={'diceImages1'} alt={'dice'}
+                        style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
+                        onAnimationEnd={ () => setCount( {diceRoll: false}) }
+                        src={require(`../assests/Dice-${diceState1}.svg`)}/>
+
+                    <img
+
+                        className={diceRoll ? 'diceImages1' : 'diceImages'} alt={'dice'}
+                        style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
+                        onAnimationEnd={ () => setCount({diceRoll: false}) }
+                        src={require(`../assests/Dice-${diceState2}.svg`)}/>
+                </div>
+
+
+            };
+
+
+
+
 
 
         </div>
@@ -51,7 +97,4 @@ const Dice = () => {
 
     )
 };
-
-
-// flexbox , image resizing
 export default Dice
