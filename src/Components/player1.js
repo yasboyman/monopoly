@@ -41,7 +41,7 @@ class PlayerActiveButtons extends Component {
 
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
 
-            // const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
+            const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
          let hhh = '';
 
 
@@ -81,7 +81,7 @@ class PlayerActiveButtons extends Component {
                     > Buy Property </button> : null  }
                     <button
                         className={'purchaseButton'}
-                        onClick={ () =>  this.props.turnEndedClicked() }>End turn</button>
+                        onClick={ () =>  this.props.turnEndedClicked() && endPlayerTurn.play() }>End turn</button>
 
                 </div>
 
