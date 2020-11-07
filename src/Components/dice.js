@@ -20,9 +20,9 @@ const Dice = () => {
 
 
 
-    console.log('DI',diceRoll)
+    // console.log('DI',playAudio.play())
 
-    // console.log('ROLL AGAIN', rollAgain)
+    console.log('ROLL AGAIN', diceRoll)
 
 
 
@@ -36,7 +36,6 @@ const Dice = () => {
             <h1 className={'monopolyTitle'}>MONOPOLY</h1>
 
             { /*/    rollAgain Boolean  - true once end turn clicked- avoids repeat dice click & deals with animation style below   /*/ }
-
             { rollAgain ?
 
 
@@ -46,7 +45,7 @@ const Dice = () => {
                         onClick={() => dispatch({
                             type: 'ROLL_DICE',
                             payload: purchasedProperty
-                        }) && setCount( {diceRoll: true}) && playAudio.play()  }
+                        })  && playAudio.play() && setCount( {diceRoll: true})  }
 
                         className={'diceImages1'} alt={'dice'}
                         style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
@@ -57,7 +56,7 @@ const Dice = () => {
                         onClick={() => dispatch({
                             type: 'ROLL_DICE',
                             payload: purchasedProperty
-                        }) && setCount ({diceRoll: true}) && playAudio.play()}
+                        }) && playAudio.play() && setCount ({diceRoll: true}) }
 
                         className={diceRoll ? 'diceImages1' : 'diceImages'} alt={'dice'}
                         style={{ animation:  !rollAgain ? 'rotate-scale-up-diag-2 0.7s linear both' : null   }}
@@ -85,7 +84,7 @@ const Dice = () => {
                 </div>
 
 
-            };
+            }
 
 
 

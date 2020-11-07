@@ -100,7 +100,6 @@ class BoardContainer extends Component {
 
     onFinish = () => {
         this.setState({ showPlayersPrompt: false });
-        console.log('state player colors:: ',this.state.players.color);
         this.props.addPlayersToStore(this.state.players);
         alert('lets Play! click on the dice to get rolling!');
     };
@@ -139,19 +138,19 @@ class BoardContainer extends Component {
     };
 
     // Removes player with CLICK
-    onRemovePlayer = (id) => {
+     onRemovePlayer = (index) => {
+         console.log('INDEX' , index )
 
-        const newState = this.state;
-        const index = newState.players.findIndex(a => a.id === id);
+        let newState = [...this.state.players];
+        newState.splice(index, 1)
+         console.log(newState)
 
-        if (index === 1) return;
-        newState.players.splice(index, 1);
-
-        this.setState(newState);
+        this.setState({players: newState});
 
     };
-    // prop reducer add player id to property
-    //    player reducer add propery id to the player
+
+
+
 
     render() {
 
@@ -159,38 +158,55 @@ class BoardContainer extends Component {
 
 
         return (
-          <div style={{ width:'100%', position: 'relative', backgroundColor: 'brown', height: '100%', } }>
+          <div style={{ width:'100%' ,position: 'relative', backgroundColor: 'brown', height:'auto',  } }>
               {/*window.innerHeight,this was instead of height 100%*/}
               {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
-                  width: '400px', height: '300px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
-                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px', fontSize: '24px',}}>
+                  width: '400px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
+                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px',
+                  paddingBottom: '20px', border: 'solid black 1px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
 
+              }}>
 
-                  <form onSubmit={this.addPlayer}>
+                  <form
+
+                      onSubmit={this.addPlayer}>
+
+                      <br  />
 
                       <input
-                        style={{ width: '100px'}}
+
+                        className={'playersInputForm'}
                         value={playerName}
                         placeholder="Enter name"
                         onChange={event => this.handleKeyDown(event)} required/>
-                      <button style={{ width: '100px'}} type={'submit'}>Add Player</button>
-                      <button style={{ width: '100px'}} type={'button'}
-                              onClick={this.onRemovePlayer}
-                      >Click on player to remove</button>
+                      <br />
+                      <button    className={'add_Player_Button'}type={'submit'}>Add Player</button>
+
 
                   </form>
 
-                  {players.map(player =>
-                    <div
-                      style={{padding: '10px'}}
-                      onClick={this.onRemovePlayer}>{player.name}</div>  )}
 
-                  <button style={{ width: '100px'}} onClick={this.onFinish}>Finished </button>
+
+                  {/*// renders PLAYERS name at the start INPUT*/}
+
+                  {players.map((player, index)  =>
+                    <div style={{padding: '10px'}}>{player.name}
+
+                     <button
+                        className={'remove_Player_Button'}
+
+                        onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
+                  <br />   <br />  <br />
+
+                  <button style={{ width: '100px', backgroundColor: 'white'}} onClick={this.onFinish}>Finished </button>
 
 
 
               </div> }
               {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
+
+
+
 
 
 

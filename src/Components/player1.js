@@ -9,7 +9,6 @@ class PlayerActiveButtons extends Component {
 
 
 
-
     render() {
         const {players, dataArray} = this.props;
 
@@ -33,12 +32,6 @@ class PlayerActiveButtons extends Component {
         const rentOfProperty = active_properties_data && active_properties_data.rent;
 
 
-
-
-
-
-
-
         const handlePurchase = () => {
             const currentProperty = this.props.properties[active_properties_data.name];
             if (!currentProperty.purchased) return  this.props.purchaseTing({active_Player_obj, active_properties_data, colorOfProperty}) && playAudioBuy.play() ;
@@ -49,12 +42,14 @@ class PlayerActiveButtons extends Component {
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
 
             // const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
+         let hhh = '';
 
 
         return (
 
 
-            <div className={'players'}>
+            <div
+                className={'players'}>
 
 
 
@@ -63,10 +58,10 @@ class PlayerActiveButtons extends Component {
                 {active_properties_data &&
                 <div className={'propertyList'}>
 
-                    {{propertyName} &&  <h5> Property Details:  </h5>}
+                    {{propertyName} && <h5> Property Details:  </h5>}
                         <h5>{propertyName && propertyName}</h5>
                         <h5>  {priceOfProperty &&  `£ ${priceOfProperty}`} </h5>
-                    <h5>  {rentOfProperty &&  `£ ${rentOfProperty}`} </h5>
+                    <h5>  {rentOfProperty &&  ` Rent : £${rentOfProperty}`} </h5>
 
 
 

@@ -81,11 +81,11 @@ top: 20%;
 }
 
 .diceImages1{
-  max-height: 80px;
-  max-width: 80px;
+  max-height: 100px;
+  max-width: 100px;
   width: 100%;
   height: 100%;
-  padding: 29px;
+  padding: 29px  10px 10px 10px;
   animation-name: dices;
 
 
@@ -98,12 +98,13 @@ top: 20%;
   ;
   }
   50% {
-    transform: scale(1.4) rotate3d(-1, 1, 0, 180deg);
+    transform: scale(1.4) rotate3d(-1, 1, 0, 60deg);
     opacity: 0.5;
   }
   100% {
     transform: scale(1) rotate3d(-1, 1, 0, 360deg);
     opacity: 1;
+
   }
 }
 
@@ -132,8 +133,14 @@ top: 20%;
   transition: transform .2s;
   color: white;
   padding: 20px;
-  background: transparent;
+  text-align: center;
+  border-radius: 10px;
+}
 
+.propertyList {
+
+  color: black;
+  font-family: Verdana;
 }
 
 
@@ -161,17 +168,32 @@ top: 20%;
 
  .monopolyTitle {
 
-   display: block;
+   display: flex;
    position: fixed;
    font-weight: 300;
-   -webkit-transform: scale(2,1);
    margin: -58px;
    color: white;
    transform: rotate(-34deg);
    font-size: 120px;
    right: 30%;
    top: 46%;
+   animation-name: monopolyTitle;
+   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 5000ms both;
+
  }
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
 
@@ -269,7 +291,7 @@ margin-top: 0.2%;
 
 .playerInfoUI {
   width: 200px;
-  height: 300px;
+  /*height: 300px;*/
 position: absolute;
   text-align: center;
   top: 20%;
@@ -277,14 +299,73 @@ position: absolute;
   border-radius: 10px;
   background-color: seashell;
   border: solid  0.5px black;
+  /* height: 300px; */
+  padding-bottom: 20px
 }
 .cards{
   transition: transform .2s; /* Animation */
 }
 
 .cards:hover {
-
   transform: scale(1.1);
 }
+
+.playersInputForm {
+
+  display: flex;
+  align-items: center;
+  border: solid 1px yellow;
+  text-align: -webkit-center;
+
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  width:100%;
+  overflow:auto
+;
+  height:auto;
+
+}
+
+.clear{
+
+}
+
+
+
+.add_Player_Button{
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  width:  -moz-fit-content;
+  padding: 15px;
+  width: 90px;
+  border-radius: 9%;
+
+  margin-bottom: 10px;
+  position: absolute;
+  margin-top: auto;
+  top: 9%;
+  right: 9%;
+
+
+
+}
+
+.remove_Player_Button{
+
+  background-color: red;
+  color: white;
+
+  padding: 5px;
+  font-weight: bold;
+  width: 25px;
+  border-radius: 20%;
+  margin-left: 10px;
+  margin-right: auto;
+
+
+
+}
+
 
 

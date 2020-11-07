@@ -143,7 +143,7 @@ export default connect(mapStateToProps) (BoardData)
 //- players to be on outside of board - position will be : 'absolute' // parent relative,       **** DONE!!
 //- add images no background                                                                    **** DONE!!
 // - implement rent                                                                              **** DONE!!
-// - current player - money display in UI, mark on UI purchased property,
+// - current player - money display in UI, mark on UI purchased property,                       ******DONE !!!!
 // pass go get 200                                                                              **** DONE!!!
 // income tax - reducer
 // title for prop bold                                                                          **** DONE!!
@@ -158,4 +158,4 @@ export default connect(mapStateToProps) (BoardData)
 // player names more cirlly- radius               DONE!!!
 // apppeal to buyer to puchase, cost preview
 // h1 to pay rent how much lost
-// dice animation
+// dice animation                                   DONE !!!
