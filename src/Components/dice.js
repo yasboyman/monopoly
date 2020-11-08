@@ -19,15 +19,6 @@ const Dice = () => {
     const [diceRoll, setCount] = useState({diceRoll: false});
 
 
-
-    // console.log('DI',playAudio.play())
-
-    console.log('ROLL AGAIN', diceRoll)
-
-
-
-
-
     return (
 
         <div className={'dice'}>

@@ -20,3 +20,17 @@
 //
 //
 //         export default passGroupFetchedFromPropertyReducer
+
+
+const purchasePropertyAction = (payload) => {
+
+    return {
+
+        type: 'PURCHASE_PROPERTY',
+        payload,
+
+    }
+
+};
+
+export default purchasePropertyAction

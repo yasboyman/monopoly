@@ -1,16 +1,23 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import BoardData from "./BoardData";
-import PlayersInfoUI from "./playersInfoUI";
+import React from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import purchasePropertyAction from '../actions/passingINFOAction'
+
 
  //this component will grab data, and allow player to purchase using onClick //
+const  PlayerActiveButtons  = () => {
 
-class PlayerActiveButtons extends Component {
+    // dicePositions: state.diceReducer.dicePosition,
+    // dataArray: state.fullDataArray,
+    // players: state.playersReducer.players,
+    // properties: state.propertiesData,
 
 
+    const dispatch = useDispatch();
 
-    render() {
-        const {players, dataArray} = this.props;
+  const dicePositions = useSelector( state=> state.diceReducer.dicePosition);
+const dataArray = useSelector( state => state.fullDataArray);
+const players = useSelector( state => state.playersReducer.players);
+    const properties = useSelector( state => state.propertiesData );
 
 
 //DISPLAYS CURRENT ACTIVE PLAYER
@@ -26,32 +33,41 @@ class PlayerActiveButtons extends Component {
         const active_properties_data = dataArray[playerDicePosition];
 
 
+
+
         const propertyName = active_properties_data && active_properties_data.name;
         const priceOfProperty = active_properties_data && active_properties_data.price;
         const colorOfProperty = active_properties_data && active_properties_data.color;
         const rentOfProperty = active_properties_data && active_properties_data.rent;
 
-
         const handlePurchase = () => {
-            const currentProperty = this.props.properties[active_properties_data.name];
-            if (!currentProperty.purchased) return  this.props.purchaseTing({active_Player_obj, active_properties_data, colorOfProperty}) && playAudioBuy.play() ;
-            alert('property has already been purchased');
+            const currentProperty = properties[active_properties_data.name];
+            if (!currentProperty.purchased) {
+                return dispatch( purchasePropertyAction({
+                    active_Player_obj, active_properties_data,
+                    colorOfProperty
+                })) && playAudioBuy.play()
+            } else {
+                alert('property has already been purchased')
+            }
+
         };
 
 
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
-
             const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
-         let hhh = '';
+
+
+
+            const handleEndPlayerTurn  = () => {
+                 dispatch({type:'END_PLAYER_TURN'}) &&   endPlayerTurn.play()
+            };
 
 
         return (
 
-
             <div
                 className={'players'}>
-
-
 
                 { {active_properties_data} && <h5> Current Player : {currentPlayerName()} </h5>}
 
@@ -63,14 +79,7 @@ class PlayerActiveButtons extends Component {
                         <h5>  {priceOfProperty &&  `£ ${priceOfProperty}`} </h5>
                     <h5>  {rentOfProperty &&  ` Rent : £${rentOfProperty}`} </h5>
 
-
-
-
-
                 </div> }
-
-
-
 
 
                 <div className={'purchaseButton'}>
@@ -81,36 +90,16 @@ class PlayerActiveButtons extends Component {
                     > Buy Property </button> : null  }
                     <button
                         className={'purchaseButton'}
-                        onClick={ () =>  this.props.turnEndedClicked() && endPlayerTurn.play() }>End turn</button>
+                        onClick={ () =>  handleEndPlayerTurn() }>End turn</button>
 
                 </div>
 
 
             </div>
-        );
-    };
-}
+        )
 
-
-const mapStateToProps = (state) => ({
-
-
-    dicePositions: state.diceReducer.dicePosition,
-    dataArray: state.fullDataArray,
-    players: state.playersReducer.players,
-    properties: state.propertiesData,
-
-});
-
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-        turnEndedClicked:  () => dispatch({type: 'END_PLAYER_TURN'}),
-        purchaseTing: (payload) => dispatch({type: 'PURCHASE_PROPERTY', payload })
-
-    }
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerActiveButtons)
+
+export default PlayerActiveButtons
