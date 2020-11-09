@@ -198,7 +198,7 @@ class BoardContainer extends Component {
                         onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
                   <br />   <br />  <br />
 
-                  <button style={{ width: '100px', backgroundColor: 'white'}} onClick={this.onFinish}>Finished </button>
+                  <button className={'submitPlayersButton'} onClick={this.onFinish}>Finished </button>
 
 
 

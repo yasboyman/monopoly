@@ -27,7 +27,11 @@ const PlayerInfoUI = () => {
 
         const propsss = player.properties.map( x =>
 
-            <Trail items={x} keys={x => x.key} from={{transform: 'translate3d(0,-40px,0)'}} to={{transform: 'translate3d(0,0px,0)'}}>
+            <Trail
+                items={x}
+                keys={x => x.key}
+                from={{transform: 'translate3d(0,-40px,0)'}}
+                to={{transform: 'translate3d(0,0px,0)'}}>
         {x => props =>  <animated.div style={props}> <br /> {x} </animated.div> }
     </Trail>
 

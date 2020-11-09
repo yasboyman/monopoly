@@ -88,8 +88,8 @@ top: 20%;
   padding: 29px  10px 10px 10px;
   animation-name: dices;
 
-
 }
+
 
 @keyframes  rotate-scale-up-diag-2{
   0% {
@@ -178,7 +178,10 @@ top: 20%;
    right: 30%;
    top: 46%;
    animation-name: monopolyTitle;
-   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 5000ms both;
+   /*animation: shake 0.5s;*/
+
+   /* When the animation is finished, start again */
+   animation-iteration-count: infinite;
 
  }
 
@@ -192,6 +195,24 @@ top: 20%;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }
 
@@ -280,6 +301,7 @@ margin-top: 0.2%;
   background-color: wheat;font-weight: bold;
   /*transition: transform .2s;*/
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .purchaseButton :hover {
@@ -320,32 +342,44 @@ position: absolute;
   margin-bottom: 20px;
   box-sizing: border-box;
   width:100%;
-  overflow:auto
-;
+  overflow:auto;
   height:auto;
+  border-radius: 32px;
+  cursor: pointer;
+
 
 }
 
-.clear{
+.submitPlayersButton {
 
+
+  background-color: darkolivegreen;
+  border-radius: inherit;
+  color: white;
+  padding: 9px;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+
 
 
 
 .add_Player_Button{
-  background-color: green;
+  background-color: darkolivegreen;
   color: white;
   font-weight: bold;
   width:  -moz-fit-content;
   padding: 15px;
   width: 90px;
-  border-radius: 9%;
-
+  border-radius: 23%;
   margin-bottom: 10px;
   position: absolute;
   margin-top: auto;
   top: 9%;
   right: 9%;
+  cursor: pointer;
+
 
 
 
@@ -353,17 +387,15 @@ position: absolute;
 
 .remove_Player_Button{
 
-  background-color: red;
+  background-color: darkred;
   color: white;
-
   padding: 5px;
   font-weight: bold;
-  width: 25px;
+
   border-radius: 20%;
   margin-left: 10px;
   margin-right: auto;
-
-
+  cursor: pointer;
 
 }
 

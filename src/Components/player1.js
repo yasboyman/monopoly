@@ -57,10 +57,17 @@ const players = useSelector( state => state.playersReducer.players);
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
             const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
 
+//   const playSoundEnd = {
+//     <audio media-player="audioPlayer" autoPlay controls="controls" preload="auto" id="audioElement"
+//            crossOrigin="anonymous" src="{'http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3'}"></audio>
+// }
+
+
 
 
             const handleEndPlayerTurn  = () => {
-                 dispatch({type:'END_PLAYER_TURN'}) &&   endPlayerTurn.play()
+               return    dispatch({type:'END_PLAYER_TURN'})
+                   // && endPlayerTurn.play(); Uncaught (in promise) DOMException: The element has no supported sources.
             };
 
 
@@ -90,7 +97,7 @@ const players = useSelector( state => state.playersReducer.players);
                     > Buy Property </button> : null  }
                     <button
                         className={'purchaseButton'}
-                        onClick={ () =>  handleEndPlayerTurn() }>End turn</button>
+                        onClick={  () => handleEndPlayerTurn() }>End turn</button>
 
                 </div>
 
