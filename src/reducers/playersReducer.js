@@ -1,6 +1,3 @@
-import fullDataArrayReducer from "./fullDataArrayReducer";
-import React from "react";
-import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 
 const initialState ={
@@ -139,8 +136,14 @@ const playersReducer  = (state =  initialState, action) => {
             const priceOfProperty = action.payload.active_properties_data.price;   // grabs price from payload //
             const findActivePlayer = state.players.findIndex( player => player.active); // finds index of player that is active //
 
+
             const newPlayer = state.players.map((player) => {
+
+
+
                 if ( player.active) {
+
+
                     return {
                         ...player,
                         money: player.money - parseFloat(priceOfProperty),
@@ -153,22 +156,34 @@ const playersReducer  = (state =  initialState, action) => {
 
 
 
-            // change state here
+            // *****    ATTEMPTING TO REMOVE PLAYER IF MONEY LESS THAN 0 = BROKE ******** ///
+         // state.players.map( (player) =>  {
+         //
+         //
+         //    if (player.active && player.money < 0  ) {
+         //
+         //       alert('removed')
+         //
+         //        return {
+         //            ...state,
+         //            players: state.players.filter(i => i !== player)
+         //        }
+         //
+         //
+         //    }
+         //    return player
+         //
+         // })
 
 
-
-
-
-
-            //
             return {
                 ...state,
 
                 players: newPlayer
-
-
-
             };
+
+
+
 
         case 'BYEBYE':
 
@@ -178,8 +193,24 @@ const playersReducer  = (state =  initialState, action) => {
                 popUpBox: false
             }
 
+
+
+
+        case 'PLAYER_BROKE':
+
+          alert('BROKEEE ASSS BITCHHH')
+
+            return {
+                ...state,
+
+            }
+
     };
-// how to add more info into object, how to input diceData//
+
+
+
+
+
 
     return state;
 };

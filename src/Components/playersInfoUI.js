@@ -29,7 +29,7 @@ const PlayerInfoUI = () => {
 
             <Trail
                 items={x}
-                keys={x => x.key}
+                // key={x => x.index}
                 from={{transform: 'translate3d(0,-40px,0)'}}
                 to={{transform: 'translate3d(0,0px,0)'}}>
         {x => props =>  <animated.div style={props}> <br /> {x} </animated.div> }

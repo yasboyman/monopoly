@@ -67,7 +67,7 @@ const initialState  =
             rent: 350,
             id: 15
         },
-        'Marlebone Station': {
+        'Marylebone Station': {
             purchased: false,
             owner: '',
             rent: 500,

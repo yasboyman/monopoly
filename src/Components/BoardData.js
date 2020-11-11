@@ -157,9 +157,9 @@ export default connect(mapStateToProps) (BoardData)
 // player data on main board  data price properties with color of propers cards divs           ******DONE!!!!
 
 
-// fix dice  z index
-// images fix
+// fix dice  z index                                    DONE!!!
+// images fix                                       DONE!!!
 // player names more cirlly- radius               DONE!!!
-// apppeal to buyer to puchase, cost preview
+// apppeal to buyer to puchase, cost preview     DONE!!!
 // h1 to pay rent how much lost
 // dice animation                                   DONE !!!

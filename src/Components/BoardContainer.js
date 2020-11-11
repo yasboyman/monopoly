@@ -143,7 +143,7 @@ class BoardContainer extends Component {
 
         let newState = [...this.state.players];
         newState.splice(index, 1)
-         console.log(newState)
+
 
         this.setState({players: newState});
 
@@ -152,7 +152,23 @@ class BoardContainer extends Component {
 
 
 
+
+
+
     render() {
+
+
+        // ACTIVE PLAYERS MONEY AMOUNT-  IS IT LESS THAT 0> BROKE
+        const  active_player =   this.props.playersReduxState.filter( x => x.active)
+        const fire =  active_player.find( i =>  (i.money))
+        const active_Player_Money = fire && fire.money
+        console.log('this active player MONEY $$',  active_Player_Money)
+
+         // active_Player_Money < 0 ? dispatch({type:'PLAYER_BROKE'}) : null
+
+
+
+
 
         const { showPlayersPrompt, playerName, players } = this.state;
 
@@ -216,6 +232,9 @@ class BoardContainer extends Component {
                   {this.renderBoardRight()}
               </div>
               {this.renderBoardBottom()}
+
+              {Math.sign(active_Player_Money) === -1 ? this.props.playerIsBroke : null}
+
           </div>
         )
     }
@@ -225,12 +244,13 @@ class BoardContainer extends Component {
 const mapStateToProps = (state) => ({
     dataArray: state.fullDataArray,
     dicePosition: state.diceReducer.dicePosition,
-    players: state.playersReducer.players
+    playersReduxState: state.playersReducer.players
 });
 
 const mapDispatchToProps = (dispatch) => ({
     diceClicked: () =>  dispatch(diceAction()),// using actions passing functions
     addPlayersToStore: (players) => dispatch(submitPlayers(players)),
+   playerIsBroke : () =>  dispatch({type: 'PLAYER_BROKE'})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (BoardContainer)

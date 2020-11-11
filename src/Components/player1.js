@@ -34,24 +34,28 @@ const players = useSelector( state => state.playersReducer.players);
 
 
 
-
+            // GETS INFO OF PROPERTIES- NAME, PRICE, COLOR, RENT
         const propertyName = active_properties_data && active_properties_data.name;
         const priceOfProperty = active_properties_data && active_properties_data.price;
         const colorOfProperty = active_properties_data && active_properties_data.color;
         const rentOfProperty = active_properties_data && active_properties_data.rent;
 
+
+        // ACTIVE PLAYERS MONEY AMOUNT-  IS IT LESS THAT 0> BROKE
+    // const fire =  active_Player_obj.find( i =>  (i.money))
+    // const active_Player_Money = fire && fire.money
+
         const handlePurchase = () => {
             const currentProperty = properties[active_properties_data.name];
             if (!currentProperty.purchased) {
-                return dispatch( purchasePropertyAction({
+                return dispatch(purchasePropertyAction({
                     active_Player_obj, active_properties_data,
                     colorOfProperty
                 })) && playAudioBuy.play()
             } else {
                 alert('property has already been purchased')
             }
-
-        };
+        }
 
 
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
@@ -63,8 +67,6 @@ const players = useSelector( state => state.playersReducer.players);
 // }
 
 
-
-
             const handleEndPlayerTurn  = () => {
                return    dispatch({type:'END_PLAYER_TURN'})
                    // && endPlayerTurn.play(); Uncaught (in promise) DOMException: The element has no supported sources.
@@ -73,8 +75,12 @@ const players = useSelector( state => state.playersReducer.players);
 
         return (
 
+
+
             <div
+
                 className={'players'}>
+                {/*{active_Player_Money < 0 ? dispatch({type:'PLAYER_BROKE'}) : null}*/}
 
                 { {active_properties_data} && <h5> Current Player : {currentPlayerName()} </h5>}
 
@@ -89,6 +95,7 @@ const players = useSelector( state => state.playersReducer.players);
                 </div> }
 
 
+
                 <div className={'purchaseButton'}>
                     {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
                     { active_properties_data && active_properties_data.type == 'location'  ? <button
@@ -98,6 +105,8 @@ const players = useSelector( state => state.playersReducer.players);
                     <button
                         className={'purchaseButton'}
                         onClick={  () => handleEndPlayerTurn() }>End turn</button>
+
+
 
                 </div>
 
