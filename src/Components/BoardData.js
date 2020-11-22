@@ -52,9 +52,8 @@ const BoardData = ({data, position, players}) => {
                         height: '25px',
                         position: 'absolute',
                         width: 'auto',
-                        maxHeight: '25px'
-
-
+                        maxHeight: '25px',
+                        minWidth: '75px',
                     }}>{player.name}</h4>
 
 
