@@ -11,15 +11,12 @@ const BoardData = ({data, position, players}) => {
         width: position === 'side' ? '17%' : '80%' ,
         fontSize: '9px',
         height: `${(window.innerHeight)/11.75}px` ,
-        // `${(window.innerHeight) / 20}px'
         marginBottom: '30px',
         textAlign: 'center',
         margin: '1px',
         backgroundColor: 'white',
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
         borderRadius: ' 0 0 10% 10%',
-
-
     };
 
     // sets the card title name along with Color of title
@@ -37,17 +34,15 @@ const BoardData = ({data, position, players}) => {
     };
 
     const renderPlayers = () => {
-        return players.map(player => {
+        return players.map((player) => {
             if (player.position === data.id -1){
                 return (
                     <h4 style={{
-                        // backgroundColor: player.active ? 'yellow' : 'white smoke',
 
                         backgroundColor: player.color,
                         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
                         zIndex: '99  !important',
                         paddingTop: '10px',
-                        // animation: player.active? 'mymove 3s infinite': null,
                         animation:  player.active? 'shake 1s cubic-bezier(.36,.07,.19,.97) both': null,
                         animationIterationCount:'infinite',
                         transform: 'translate3d(0, 0, 0)',
@@ -56,7 +51,7 @@ const BoardData = ({data, position, players}) => {
                         // padding:' 10% 10% 10% 10px',
                         height: '25px',
                         position: 'absolute',
-                      width: 'auto',
+                        width: 'auto',
                         maxHeight: '25px'
 
 
@@ -65,7 +60,9 @@ const BoardData = ({data, position, players}) => {
 
                 )
             }
+
         })
+
     };
 
     return (

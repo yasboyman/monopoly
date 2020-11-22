@@ -39,11 +39,9 @@ const players = useSelector( state => state.playersReducer.players);
         const priceOfProperty = active_properties_data && active_properties_data.price;
         const colorOfProperty = active_properties_data && active_properties_data.color;
         const rentOfProperty = active_properties_data && active_properties_data.rent;
+        const ownerOfProperty =  Object.keys(properties)
 
-
-        // ACTIVE PLAYERS MONEY AMOUNT-  IS IT LESS THAT 0> BROKE
-    // const fire =  active_Player_obj.find( i =>  (i.money))
-    // const active_Player_Money = fire && fire.money
+        // const findPlayerOwner = ownerOfProperty.on
 
         const handlePurchase = () => {
             const currentProperty = properties[active_properties_data.name];
@@ -58,39 +56,57 @@ const players = useSelector( state => state.playersReducer.players);
         }
 
 
+    const showIfPurchased = () => {
+        const currentProperty = properties[active_properties_data.name];
+        const ownerOfProperty11 =  currentProperty && currentProperty.owner.toString()
+
+        console.log('ownerOfProperty11', ownerOfProperty11)
+        if (ownerOfProperty11 === false || 'undefined') {
+            return `You can purchase this property`
+        } else {
+            return `Owner: ${ownerOfProperty11}`
+        }
+    }
+
+
         const playAudioBuy =  new Audio('http://soundjay.com/misc/coins-in-hand-2.wav');
             const endPlayerTurn  = new Audio('http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3');
-
-//   const playSoundEnd = {
-//     <audio media-player="audioPlayer" autoPlay controls="controls" preload="auto" id="audioElement"
-//            crossOrigin="anonymous" src="{'http://orteil.dashnet.org/cookieclicker/snd/buy2.mp3'}"></audio>
-// }
-
 
             const handleEndPlayerTurn  = () => {
                return    dispatch({type:'END_PLAYER_TURN'})
                    // && endPlayerTurn.play(); Uncaught (in promise) DOMException: The element has no supported sources.
             };
 
+            // console.log('FIREEEEE',   active_properties_data && ownerOfProperty[active_properties_data.name])
 
         return (
-
-
 
             <div
 
                 className={'players'}>
                 {/*{active_Player_Money < 0 ? dispatch({type:'PLAYER_BROKE'}) : null}*/}
 
-                { {active_properties_data} && <h5> Current Player : {currentPlayerName()} </h5>}
+
 
                 {active_properties_data &&
-                <div className={'propertyList'}>
+
+                <div
+                    className={'propertyList'}
+                    style={{display: "flex", flexDirection: 'column', alignItems: 'center',
+                        width: '200px', height: '200px', backgroundColor: "white", top: '10%',
+                        right: '70%', marginRight: '-200px', zIndex: '999', borderRadius: '12%', fontSize: '12px',}}>
 
                     {{propertyName} && <h5> Property Details:  </h5>}
-                        <h5>{propertyName && propertyName}</h5>
+                    <h5> Current Player : {currentPlayerName()} </h5>
+                    <h5 style={{margin: '-8px'}}>{propertyName && propertyName}</h5>
                         <h5>  {priceOfProperty &&  `£ ${priceOfProperty}`} </h5>
-                    <h5>  {rentOfProperty &&  ` Rent : £${rentOfProperty}`} </h5>
+                    <h5>{showIfPurchased()}</h5>
+                    <h5>  {rentOfProperty &&  ` Rent : £${rentOfProperty}`}</h5>
+
+
+
+
+                   
 
                 </div> }
 

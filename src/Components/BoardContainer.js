@@ -134,6 +134,7 @@ class BoardContainer extends Component {
                     active: false,
                     position: 0,
                     color: this.randomColorGenerator(),
+                    inGame: true,
                 } ], playerName: ''  })
     };
 
@@ -150,6 +151,18 @@ class BoardContainer extends Component {
     };
 
 
+     isPlayerBroke = () => {
+
+         const  active_player =   this.props.playersReduxState.filter( x => x.active)
+         const findMoneyAmount =  active_player.find( i =>  (i.money))
+         const active_Player_Money = findMoneyAmount && findMoneyAmount.money
+
+         if (active_Player_Money < 0 ) {
+             this.props.playerIsBroke()
+         }
+
+
+     }
 
 
 
@@ -157,16 +170,19 @@ class BoardContainer extends Component {
 
     render() {
 
-
         // ACTIVE PLAYERS MONEY AMOUNT-  IS IT LESS THAT 0> BROKE
-        const  active_player =   this.props.playersReduxState.filter( x => x.active)
-        const fire =  active_player.find( i =>  (i.money))
-        const active_Player_Money = fire && fire.money
-        console.log('this active player MONEY $$',  active_Player_Money)
-
-         // active_Player_Money < 0 ? dispatch({type:'PLAYER_BROKE'}) : null
+        // const  active_player =   this.props.playersReduxState.filter( x => x.active)
+        // const findMoneyAmount =  active_player.find( i =>  (i.money))
+        // const active_Player_Money = findMoneyAmount && findMoneyAmount.money
 
 
+        // active_Player_Money && active_Player_Money  < 0 ? this.props.playerIsBroke() : null
+
+
+
+
+        // console.log('ACTIVEPLAYER = ', active_player);
+        // console.log('this active player MONEY $$',  active_Player_Money)
 
 
 
@@ -174,7 +190,9 @@ class BoardContainer extends Component {
 
 
         return (
-          <div style={{ width:'100%' ,position: 'relative', backgroundColor: 'brown', height:'auto',  } }>
+
+
+            <div style={{ width:'100%' ,position: 'relative', backgroundColor: 'brown', height:'auto'} }>
               {/*window.innerHeight,this was instead of height 100%*/}
               {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
                   width: '400px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
@@ -182,6 +200,8 @@ class BoardContainer extends Component {
                   paddingBottom: '20px', border: 'solid black 1px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
 
               }}>
+
+
 
                   <form
 
@@ -195,6 +215,7 @@ class BoardContainer extends Component {
                         value={playerName}
                         placeholder="Enter name"
                         onChange={event => this.handleKeyDown(event)} required/>
+
                       <br />
                       <button    className={'add_Player_Button'}type={'submit'}>Add Player</button>
 
@@ -206,11 +227,12 @@ class BoardContainer extends Component {
                   {/*// renders PLAYERS name at the start INPUT*/}
 
                   {players.map((player, index)  =>
-                    <div style={{padding: '10px'}}>{player.name}
+                    <div
+                        key={player.id}
+                        style={{padding: '10px'}}>{player.name}
 
                      <button
                         className={'remove_Player_Button'}
-
                         onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
                   <br />   <br />  <br />
 
@@ -222,20 +244,21 @@ class BoardContainer extends Component {
               {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
 
 
-
-
-
-
               {this.renderBoardTop()}
+
               <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: '#902b00' }}>
                   {this.renderBoardLeft()}
                   {this.renderBoardRight()}
               </div>
+
               {this.renderBoardBottom()}
 
-              {Math.sign(active_Player_Money) === -1 ? this.props.playerIsBroke : null}
+                {this.isPlayerBroke}
+
 
           </div>
+
+
         )
     }
 }

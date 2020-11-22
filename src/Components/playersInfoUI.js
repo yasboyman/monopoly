@@ -35,7 +35,7 @@ const PlayerInfoUI = () => {
         {x => props =>  <animated.div style={props}> <br /> {x} </animated.div> }
     </Trail>
 
-    ) ;
+    );
 
         if  (player.active)
             playerInfo = {
@@ -67,16 +67,10 @@ const PlayerInfoUI = () => {
 
 
         <animated.div className={'playerInfoUI'} style={props}>
-
-            <h5
-                style={{zIndex: '900', color: 'black'  , backgroundColor: playerInfo.color, marginTop: '0%', borderRadius: '1px', height: '25px'  }}> {playerInfo.name}  </h5>
-
+            <h5 style={{zIndex: '900', color: 'black'  , backgroundColor: playerInfo.color, marginTop: '0%', borderRadius: '1px', height: '25px'  }}> {playerInfo.name}  </h5>
             {playerInfo.money && <h5 style={{zIndex: '900', color: 'black'}}> Money: £ {playerInfo.money}  </h5>}
-
             { playerInfo.properties && <h5  style={{zIndex: '900'}}> Properties: </h5>}
-
             <div>   {  playerInfo.properties &&  playerInfo.properties } </div>
-
         </animated.div>
 
 
