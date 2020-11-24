@@ -86,14 +86,12 @@ const players = useSelector( state => state.playersReducer.players);
                 className={'players'}>
                 {/*{active_Player_Money < 0 ? dispatch({type:'PLAYER_BROKE'}) : null}*/}
 
-
-
                 {active_properties_data &&
 
                 <div
                     className={'propertyList'}
                     style={{display: "flex", flexDirection: 'column', alignItems: 'center',
-                        width: '200px', height: '200px', backgroundColor: "white", top: '10%',
+                        width: '200px', height: 'auto', backgroundColor: "white", top: '10%',
                         right: '70%', marginRight: '-200px', zIndex: '999', borderRadius: '12%', fontSize: '12px',}}>
 
                     {{propertyName} && <h5> Property Details:  </h5>}
@@ -114,7 +112,8 @@ const players = useSelector( state => state.playersReducer.players);
 
                 <div className={'purchaseButton'}>
                     {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
-                    { active_properties_data && active_properties_data.type == 'location'  ? <button
+                    { active_properties_data && active_properties_data.type === 'location' ||
+                    active_properties_data && active_properties_data.type === 'Station'  ? <button
                         onClick={ handlePurchase }
                         className={'purchaseButton'}
                     > Buy Property </button> : null  }

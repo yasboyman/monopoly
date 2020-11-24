@@ -55,55 +55,41 @@ const BoardData = ({data, position, players}) => {
                         maxHeight: '25px',
                         minWidth: '75px',
                     }}>{player.name}</h4>
-
-
                 )
             }
-
         })
-
     };
 
     return (
         <div  className={'cards'} style={style}>
 
-
             <header style={styleName}> {data.name} </header>
 
             {/*// renders the name of the player on the cards //*/}
             <div> {renderPlayers() && renderPlayers()} </div>
-
-            {data.price && <h3 style={{fontSize: '8px', marginTop: '37px'}}>£{data.price}</h3> }
-
+            {data.price && <h3 style={{fontSize: '8px', marginTop: '40px'}}>£{data.price}</h3> }
             {data.name === ' Chance ' &&
-
             <div>
-
                 <img
                     className={'chance'} alt={'chance'} src={require('../assests/monopoly-chance-question-mark.png')}/>
-            </div>
-            }
+            </div>}
 
             {data.name === 'Free Parking' &&
-            <img className={'freeParking'} alt={'parking'} src={require('../assests/Free-parking.png')} />
-            }
+            <img className={'freeParking'} alt={'parking'} src={require('../assests/Free-parking.png')} />}
 
             {data.name === 'Community Chest' &&
             <img
                 style={{backgroundColor: 'white'} }
-                className={'communityChest'} alt={'chest'} src={require('../assests/chest.gif')} />
-            }
+                className={'communityChest'} alt={'chest'} src={require('../assests/chest.gif')} />}
 
 
             {data.name === 'Go to Jail' &&
-            <img className={'goToJail'} alt={'jail'} src={require('../assests/monopoly-prison-board.jpg')} />
-            }
+            <img className={'goToJail'} alt={'jail'} src={require('../assests/monopoly-prison-board.jpg')} />}
 
             {data.type == 'Station' &&
             <img
                 style={{backgroundColor: 'white'}}
-                className={'station'} alt={'station'} src={require('../assests/trainStation.jpeg')} />
-            }
+                className={'station'} alt={'station'} src={require('../assests/trainStation.jpeg')} />}
 
             {data.name == 'GO' &&
             <img
@@ -116,12 +102,7 @@ const BoardData = ({data, position, players}) => {
                 style={{backgroundColor: 'white'}}
                 className={'jail'} alt={'jail'} src={require('../assests/inJail.jpg')} />
             }
-
-
-
-
         </div>
-
     );
 };
 
@@ -131,7 +112,6 @@ const mapStateToProps = (state) => ({
     players: state.playersReducer.players
 
 });
-
 
 export default connect(mapStateToProps) (BoardData)
 
@@ -149,7 +129,7 @@ export default connect(mapStateToProps) (BoardData)
 // title for prop bold                                                                          **** DONE!!
 // remove price, move  numbers to bottom,                                                       ***** DONE!!
 // players color ... each player added to store                                                 *****DONE!!!
-    // change anywhere class to functional, useSelectors //
+// change anywhere class to functional, useSelectors //
 // player data on main board  data price properties with color of propers cards divs           ******DONE!!!!
 
 
@@ -159,3 +139,12 @@ export default connect(mapStateToProps) (BoardData)
 // apppeal to buyer to puchase, cost preview     DONE!!!
 // h1 to pay rent how much lost
 // dice animation                                   DONE !!!
+
+
+// ADD BORDER RADIUS TO COLOR PLAYERINFO UI 9PX 9 0 0
+// jire ticketing
+// two seniors above me , recommended i do personal project, its been fun.
+// ccontrol option I
+// watch vid jest and enzyme vid - react tests  used a little bit in the digital agency, not that fam but know the core
+// react test renderer
+//

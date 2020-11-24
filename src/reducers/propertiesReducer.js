@@ -181,36 +181,36 @@ const initialState  =
         },
     } ;
 
- const propertyData = (state = initialState, action ) => {
+const propertyData = (state = initialState, action ) => {
 
-     switch (action.type) {
+    switch (action.type) {
 
-         case 'PURCHASE_PROPERTY':
+        case 'PURCHASE_PROPERTY':
 
-             const propertyID = action.payload.active_properties_data.id;
-             const playerName = action.payload.active_Player_obj.map(x => x.name);
-             const propertyName = action.payload.active_properties_data.name.toString();
-             const rentOfProp = action.payload.active_properties_data.rent;
-
-
-                 return {
-                     ...state,
-                     [propertyName]: {
-                         purchased: true,
-                         owner: playerName,
-                         id: propertyID,
-                         rent: rentOfProp
-                     }
-                 };
+            const propertyID = action.payload.active_properties_data.id;
+            const playerName = action.payload.active_Player_obj.map(x => x.name);
+            const propertyName = action.payload.active_properties_data.name.toString();
+            const rentOfProp = action.payload.active_properties_data.rent;
 
 
+            return {
+                ...state,
+                [propertyName]: {
+                    purchased: true,
+                    owner: playerName,
+                    id: propertyID,
+                    rent: rentOfProp
+                }
+            };
 
 
-default:
 
-     }
-return state
 
- };
+        default:
+
+    }
+    return state
+
+};
 
 export default propertyData

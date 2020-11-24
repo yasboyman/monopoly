@@ -50,8 +50,8 @@
 }
 
 .dice {
-position: absolute;
-top: 20%;
+  position: absolute;
+  top: 20%;
 
   margin-left: 560px;
   overflow: hidden;
@@ -168,24 +168,24 @@ top: 20%;
 /*}*/
 
 
- .monopolyTitle {
+.monopolyTitle {
 
-   display: flex;
-   position: fixed;
-   font-weight: 300;
-   margin: -58px;
-   color: white;
-   transform: rotate(-34deg);
-   font-size: 120px;
-   right: 30%;
-   top: 46%;
-   animation-name: monopolyTitle;
-   /*animation: shake 0.5s;*/
+  display: flex;
+  position: fixed;
+  font-weight: 300;
+  margin: -58px;
+  color: white;
+  transform: rotate(-34deg);
+  font-size: 120px;
+  right: 30%;
+  top: 46%;
+  animation-name: monopolyTitle;
+  /*animation: shake 0.5s;*/
 
-   /* When the animation is finished, start again */
-   animation-iteration-count: infinite;
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
 
- }
+}
 
 @keyframes tracking-in-expand {
   0% {
@@ -230,19 +230,17 @@ top: 20%;
 
   max-height: 90px;
   max-width: 80px;
-  position: absolute;
   align-items: center;
   display: flex;
-  flex: fit-content;
-margin-top: 5px;
-  margin-left: 2%;
+  margin-top: 5px;
+  margin-left: 30%;
 }
 
 .jail {
 
   max-height: 50px;
   max-width: 100px;
-margin-right: 1px;
+  margin-right: 1px;
   position: absolute;
   display: flex;
   flex-direction: row-reverse;
@@ -267,9 +265,8 @@ margin-right: 1px;
   max-height: 45px;
   max-width: 80px;
   transition: 0.3s;
-  position: absolute;
   display: flex;
-  margin-left: 2.5%;
+  margin-left: 30%;
   margin-top: 5px;
 
 
@@ -278,22 +275,20 @@ margin-right: 1px;
 }
 
 .station {
-  max-height: 25px;
+  max-height: 29px;
   max-width: 70px;
-  margin-top: -45px;
-  position:absolute;
+  margin-top: -48px;
   margin-right: 25px;
-  margin-left: -15px;
-  background-color: red;
+  margin-left: 66px;
+  display: flex;
 }
 
 .go {
   max-height: 50px;
   max-width: 100px ;
-  position: absolute;
-margin-top: 0.2%;
+  margin-top: 0.2%;
   display: flex;
-  margin-left: 40px;
+  margin-left: 55px;
 }
 
 .purchaseButton{
@@ -316,7 +311,7 @@ margin-top: 0.2%;
 .playerInfoUI {
   width: 200px;
   /*height: 300px;*/
-position: absolute;
+  position: absolute;
   text-align: center;
   top: 20%;
   margin-left: 15%;

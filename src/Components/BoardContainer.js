@@ -20,9 +20,9 @@ class BoardContainer extends Component {
         for(let i= 0; i < 11 ; i++){
 
             places.push(
-              <BoardData
-                data={this.props.dataArray[i]}
-              /> )
+                <BoardData
+                    data={this.props.dataArray[i]}
+                /> )
         }
 
         return <div style={{ width:'100%', display: 'flex', flexDirection: 'row-reverse', height: '15%',} }> {places} </div>
@@ -35,10 +35,10 @@ class BoardContainer extends Component {
 
 
             places.push(
-              <BoardData
-                data={this.props.dataArray[i]}
-                position={'side'}
-              /> )
+                <BoardData
+                    data={this.props.dataArray[i]}
+                    position={'side'}
+                /> )
         }
 
         return <div style={{width:'100%', display: 'flex', justifyContent: 'flex-end', flexDirection: 'column-reverse',
@@ -51,7 +51,7 @@ class BoardContainer extends Component {
         for(let i= 20; i < 31 ; i++){
 
             places.push( <BoardData
-              data={this.props.dataArray[i]}/> )
+                data={this.props.dataArray[i]}/> )
         }
 
         return <div style={{width:'100%', display: 'flex', flexDirection: 'row', height: '10%'}}> {places} </div>
@@ -63,10 +63,10 @@ class BoardContainer extends Component {
         for(let i= 31; i < 40 ; i++){
 
             places.push(
-              <BoardData
-                data={this.props.dataArray[i]}
-                position={'side'}
-              /> )
+                <BoardData
+                    data={this.props.dataArray[i]}
+                    position={'side'}
+                /> )
         }
 
         return <div style={{width:'100%', display: 'flex', flexDirection: 'column',
@@ -75,29 +75,17 @@ class BoardContainer extends Component {
 
 
 
-     randomColorGenerator = () => {
-
-        // return  `hsla(${Math.random() * 360}, 71%, 46%)`;
-
-         // 360°, 71%, 46%
-         //
-         let letters = '0123456789ABCDEF';
-         let color = '#';
-
-
-         for(let i = 0 ; i < 6; i++){
-
-             color += letters[Math.floor(Math.random() * 16)];
-
-         }
-
-         return color
-
+    randomColorGenerator = () => {
+        let letters = '0123456789ABCDEF';
+        let color = '#';
+        for(let i = 0 ; i < 6; i++){
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     };
 
 
     // after submitting, removes input box  && dispatches action - moving this state data into store //
-
     onFinish = () => {
         this.setState({ showPlayersPrompt: false });
         this.props.addPlayersToStore(this.state.players);
@@ -106,23 +94,14 @@ class BoardContainer extends Component {
 
     // grabs input value {playerName}, moves to state //
     handleKeyDown = (event) => {
-
         event.target.value == " " ?  alert('Please Enter a Name') :  this.setState({playerName: event.target.value})
     };
 
-
-
     // grabs players name, adds to state, moves to state with player data to store when submitted//
     addPlayer = (e) => {
-
         e.preventDefault();
         e.stopPropagation();
-
         const { playerName, players } = this.state;
-
-
-
-
 
         this.setState({
             players: [...players,
@@ -139,130 +118,89 @@ class BoardContainer extends Component {
     };
 
     // Removes player with CLICK
-     onRemovePlayer = (index) => {
-         console.log('INDEX' , index )
-
+    onRemovePlayer = (index) => {
         let newState = [...this.state.players];
         newState.splice(index, 1)
-
 
         this.setState({players: newState});
 
     };
 
 
-     isPlayerBroke = () => {
-
-         const  active_player =   this.props.playersReduxState.filter( x => x.active)
-         const findMoneyAmount =  active_player.find( i =>  (i.money))
-         const active_Player_Money = findMoneyAmount && findMoneyAmount.money
-
-         if (active_Player_Money < 0 ) {
-             this.props.playerIsBroke()
-         }
-
-
-     }
-
-
-
+    isPlayerBroke = () => {
+        const  active_player =   this.props.playersReduxState.filter( x => x.active);
+        const findMoneyAmount =  active_player.find( i =>  (i.money));
+        const active_Player_Money = findMoneyAmount && findMoneyAmount.money;
+        if (active_Player_Money < 0 ) {
+            this.props.playerIsBroke()
+        }
+    };
 
 
     render() {
 
-        // ACTIVE PLAYERS MONEY AMOUNT-  IS IT LESS THAT 0> BROKE
-        // const  active_player =   this.props.playersReduxState.filter( x => x.active)
-        // const findMoneyAmount =  active_player.find( i =>  (i.money))
-        // const active_Player_Money = findMoneyAmount && findMoneyAmount.money
-
-
-        // active_Player_Money && active_Player_Money  < 0 ? this.props.playerIsBroke() : null
-
-
-
-
-        // console.log('ACTIVEPLAYER = ', active_player);
-        // console.log('this active player MONEY $$',  active_Player_Money)
-
-
-
         const { showPlayersPrompt, playerName, players } = this.state;
-
 
         return (
 
 
             <div style={{ width:'100%' ,position: 'relative', backgroundColor: 'brown', height:'auto'} }>
-              {/*window.innerHeight,this was instead of height 100%*/}
-              {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
-                  width: '400px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
-                  right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px',
-                  paddingBottom: '20px', border: 'solid black 1px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
+                {/*window.innerHeight,this was instead of height 100%*/}
+                {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
+                    width: '400px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
+                    right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px',
+                    paddingBottom: '20px', border: 'solid black 1px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
 
-              }}>
+                }}>
+                    <form
+                        onSubmit={this.addPlayer}>
+                        <br  />
+                        <input
 
+                            className={'playersInputForm'}
+                            value={playerName}
+                            placeholder="Enter name"
+                            onChange={event => this.handleKeyDown(event)} required/>
 
+                        <br />
+                        <button    className={'add_Player_Button'}type={'submit'}>Add Player</button>
 
-                  <form
-
-                      onSubmit={this.addPlayer}>
-
-                      <br  />
-
-                      <input
-
-                        className={'playersInputForm'}
-                        value={playerName}
-                        placeholder="Enter name"
-                        onChange={event => this.handleKeyDown(event)} required/>
-
-                      <br />
-                      <button    className={'add_Player_Button'}type={'submit'}>Add Player</button>
-
-
-                  </form>
+                    </form>
 
 
 
-                  {/*// renders PLAYERS name at the start INPUT*/}
+                    {/*// renders PLAYERS name at the start INPUT*/}
+                    {players.map((player, index)  =>
+                        <div
+                            key={player.id}
+                            style={{padding: '10px'}}>{player.name}
 
-                  {players.map((player, index)  =>
-                    <div
-                        key={player.id}
-                        style={{padding: '10px'}}>{player.name}
+                            <button
+                                className={'remove_Player_Button'}
+                                onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
+                    <br />   <br />  <br />
 
-                     <button
-                        className={'remove_Player_Button'}
-                        onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
-                  <br />   <br />  <br />
+                    <button className={'submitPlayersButton'} onClick={this.onFinish}>Finished </button>
 
-                  <button className={'submitPlayersButton'} onClick={this.onFinish}>Finished </button>
-
-
-
-              </div> }
-              {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
+                </div> }
+                {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
 
 
-              {this.renderBoardTop()}
+                {this.renderBoardTop()}
 
-              <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: '#902b00' }}>
-                  {this.renderBoardLeft()}
-                  {this.renderBoardRight()}
-              </div>
+                <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: '#902b00' }}>
+                    {this.renderBoardLeft()}
+                    {this.renderBoardRight()}
 
-              {this.renderBoardBottom()}
-
+                </div>
+                {this.renderBoardBottom()}
                 {this.isPlayerBroke}
-
-
-          </div>
+            </div>
 
 
         )
     }
 }
-
 
 const mapStateToProps = (state) => ({
     dataArray: state.fullDataArray,
@@ -271,9 +209,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    diceClicked: () =>  dispatch(diceAction()),// using actions passing functions
     addPlayersToStore: (players) => dispatch(submitPlayers(players)),
-   playerIsBroke : () =>  dispatch({type: 'PLAYER_BROKE'})
+    playerIsBroke : () =>  dispatch({type: 'PLAYER_BROKE'})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (BoardContainer)
