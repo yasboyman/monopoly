@@ -110,16 +110,21 @@ const players = useSelector( state => state.playersReducer.players);
 
 
 
-                <div className={'purchaseButton'}>
+                <div className={'purchaseButton1'}>
                     {/*// DISPLAYS 'BUY' BUTTON IF PROPERTY TYPE IS 'LOCATION//*/}
                     { active_properties_data && active_properties_data.type === 'location' ||
                     active_properties_data && active_properties_data.type === 'Station'  ? <button
                         onClick={ handlePurchase }
                         className={'purchaseButton'}
                     > Buy Property </button> : null  }
-                    <button
-                        className={'purchaseButton'}
-                        onClick={  () => handleEndPlayerTurn() }>End turn</button>
+
+                    {active_properties_data  &&   <button
+                            className={'endTurnButton'}
+                            onClick={  () => handleEndPlayerTurn() }>End turn</button>
+
+                    }
+
+
 
 
 

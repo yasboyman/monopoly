@@ -25,7 +25,7 @@ class BoardContainer extends Component {
                 /> )
         }
 
-        return <div style={{ width:'100%', display: 'flex', flexDirection: 'row-reverse', height: '15%',} }> {places} </div>
+        return <div style={{ width:'100%', display: 'flex', flexDirection: 'row-reverse', height: '15%', backgroundColor: 'rgb(198 228 195)' } }> {places} </div>
     };
 
     renderBoardLeft = () => {
@@ -54,7 +54,7 @@ class BoardContainer extends Component {
                 data={this.props.dataArray[i]}/> )
         }
 
-        return <div style={{width:'100%', display: 'flex', flexDirection: 'row', height: '10%'}}> {places} </div>
+        return <div style={{width:'100%', display: 'flex', flexDirection: 'row', height: '10%', backgroundColor: 'rgb(198 228 195)'}}> {places} </div>
     };
 
     renderBoardRight = () => {
@@ -147,9 +147,9 @@ class BoardContainer extends Component {
             <div style={{ width:'100%' ,position: 'relative', backgroundColor: 'brown', height:'auto'} }>
                 {/*window.innerHeight,this was instead of height 100%*/}
                 {showPlayersPrompt && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center',
-                    width: '400px', backgroundColor: "#671f00", top: '10%', position: 'absolute',
+                    width: '400px', backgroundColor: 'rgb(198 228 195)', top: '10%', position: 'absolute',
                     right: '50%', marginRight: '-200px', zIndex: '2', borderRadius: '20%', padding: '20px',
-                    paddingBottom: '20px', border: 'solid black 1px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
+                    paddingBottom: '20px', border: 'solid #ebffeb 8px', fontSize: '24px', animation: 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1000ms both', overflow: "auto", height: "auto"
 
                 }}>
                     <form
@@ -188,7 +188,7 @@ class BoardContainer extends Component {
 
                 {this.renderBoardTop()}
 
-                <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: '#902b00' }}>
+                <div style={{display:'flex', width:'100%', flexDirection: 'row', justifyContent: 'space-between', height: '80%', backgroundColor: 'rgb(198 228 195)' }}>
                     {this.renderBoardLeft()}
                     {this.renderBoardRight()}
 
