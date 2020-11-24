@@ -58,13 +58,18 @@ const players = useSelector( state => state.playersReducer.players);
 
     const showIfPurchased = () => {
         const currentProperty = properties[active_properties_data.name];
-        const ownerOfProperty11 =  currentProperty && currentProperty.owner.toString()
+        const ownerOfProperty11 =
+            active_properties_data.type === 'location' ||active_properties_data.type === 'Station' &&
+            currentProperty ? currentProperty.owner.toString() : null
 
         console.log('ownerOfProperty11', ownerOfProperty11)
-        if (ownerOfProperty11 === false || 'undefined') {
-            return `You can purchase this property`
-        } else {
+        if (ownerOfProperty11) {
             return `Owner: ${ownerOfProperty11}`
+        }
+
+        else if (active_properties_data.type === 'location' ||active_properties_data.type === 'Station' ) {
+
+            return `You can purchase this property`
         }
     }
 
