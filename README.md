@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+
+
+
+
+The project can also be found on the link below, as it's been uploaded to Heroku:https://blooming-waters-58383.herokuapp.com/
+
+Once on the page, enter players names, and get rolling!
+
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
