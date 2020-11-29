@@ -8,18 +8,14 @@ const initialState ={
     popUpBox: false,
 };
 
-
-// const isPurchased = useSelector(state => state.propertiesData);
-
 const playersReducer  = (state =  initialState, action) => {
-
-
 
     switch (action.type) {
 
+        // **  RETURNS PLAYERS ADDED, PUTS THEM IN STORE - NO REAL DATA YET , JUST NAMES, AND EMPTY OBJECTS  ** //
         case 'SUBMIT_PLAYERS':
 
-            const playersInfo = [...action.payload];    // **  RETURNS PLAYERS ADDED, PUTS THEM IN STORE - NO REAL DATA, JUST NAMES, AND EMPTY OBJECTS  ** //
+            const playersInfo = [...action.payload];
             playersInfo[0].active = true;
 
             return {
@@ -42,7 +38,7 @@ const playersReducer  = (state =  initialState, action) => {
                     return {
                         ...player,
                         position: newPlayerPosition,
-                        money: position > 40 ?  player.money +200 : player.money,
+                        money: position > 40 ?  player.money +1000 : player.money,
                     }
                 }
 
@@ -58,11 +54,10 @@ const playersReducer  = (state =  initialState, action) => {
                     activePlayer.name !== action.payload[property].owner.toString();
             } );
 
-
             const purchasedPropertyObject =  action.payload[purchasedPropertyName];
 
             if (purchasedPropertyName) {
-                alert('RENT BITCH')
+                alert('RENT !!!')
                 players = players.map((player) => {
                     if (player.active) {
                         return {
@@ -96,7 +91,6 @@ const playersReducer  = (state =  initialState, action) => {
 
             const max = state.players.length;
             let nextIndex = state.players.findIndex( player => player.active) + 1 ;
-
             if(nextIndex > max - 1) nextIndex = 0;
             const newPlayers = state.players.map((player, key) => ({ ...player, active: key === nextIndex }));
 
@@ -107,8 +101,6 @@ const playersReducer  = (state =  initialState, action) => {
                 letDiceClickAgain: true,
                 popUpBox: false
             };
-
-        // Money from active player - payload/price of property //
 
         case 'PURCHASE_PROPERTY':
             const priceOfProperty = action.payload.active_properties_data.price.replace(/,/g,"")   // grabs price from payload //
@@ -124,7 +116,6 @@ const playersReducer  = (state =  initialState, action) => {
                     }
                 }
                 return player
-
             });
 
             return {
@@ -134,7 +125,6 @@ const playersReducer  = (state =  initialState, action) => {
 
 
         case 'BYEBYE':
-
             return {
                 ...state,
                 popUpBox: false
@@ -143,7 +133,6 @@ const playersReducer  = (state =  initialState, action) => {
 
 // *****     SHOULD REMOVE PLAYER IF BROKE **** //////
         case 'PLAYER_BROKE':
-            console.log('PLAYA IS BROKE')
     }
 
     return state;

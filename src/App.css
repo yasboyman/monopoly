@@ -10,20 +10,6 @@
   width: 100%
 }
 
-/*.App-logo {*/
-/*  height: 40vmin;*/
-/*  pointer-events: none;*/
-/*}*/
-
-/*@media (prefers-reduced-motion: no-preference) {*/
-/*  .diceImages{*/
-/*    animation: App-logo-spin infinite 20s linear;*/
-/*  }*/
-/*  .diceImages1{*/
-/*    animation: App-logo-spin infinite 20s linear;*/
-/*  }*/
-/*}*/
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -51,13 +37,8 @@
 .dice {
   position: absolute;
   top: 20%;
-
   margin-left: 560px;
   overflow: hidden;
-
-
-  /*width: 400px;*/
-  /*height: 280px;*/
 
 }
 
@@ -66,7 +47,6 @@
   max-width: 80px;
   width: 100%;
   border: solid red 1px;
-
 }
 
 .diceImages {
@@ -75,8 +55,6 @@
   width: 100%;
   height: 100%;
   border: solid black 1px;
-
-
 }
 
 .diceImages1{
@@ -107,12 +85,6 @@
   }
 }
 
-
-
-
-
-
-
 .monopolyMan{
   max-height: 150px;
   max-width: 150px;
@@ -121,7 +93,6 @@
   margin-left: 250px;
 
 }
-
 
 .players {
   position: absolute;
@@ -153,18 +124,6 @@
   color: #ff0000;
 }
 
-
-/*.monopolyTitle {*/
-/*  display: inline-block;*/
-/*  font-weight: 300;*/
-/*  -webkit-transform: scale(2, 1);*/
-/*  margin: 15px;*/
-/*  color: white;*/
-/*  padding-left: 70px;*/
-/*  padding-right: 70px;*/
-/*  transform: rotate(-20deg);*/
-/*  z-index: 5;*/
-/*}*/
 
 
 .monopolyTitle {
@@ -243,7 +202,6 @@
   position: absolute;
   display: flex;
   flex-direction: row-reverse;
-
 }
 
 .freeParking{
@@ -254,8 +212,6 @@
   margin-left: 23%;
   margin-top: 16px;
   left: 1px;
-
-
 }
 
 .communityChest {
@@ -265,10 +221,6 @@
   display: flex;
   margin-left: 30%;
   margin-top: 5px;
-
-
-
-
 }
 
 .station {
@@ -276,7 +228,7 @@
   max-width: 70px;
   margin-top: -48px;
   margin-right: 25px;
-  margin-left: 66px;
+  margin-left: 45px;
   display: flex;
 }
 
@@ -311,7 +263,6 @@
   /*transition: transform .2s;*/
   border-radius: 20px;
   cursor: pointer;
-
 }
 
 .purchaseButton :hover {
@@ -323,7 +274,6 @@
 
 .playerInfoUI {
   width: 200px;
-  /*height: 300px;*/
   position: absolute;
   text-align: center;
   top: 20%;
@@ -331,7 +281,6 @@
   border-radius: 10px;
   background-color: seashell;
   border: solid  0.5px black;
-  /* height: 300px; */
   padding-bottom: 20px
 }
 .cards{
@@ -343,7 +292,6 @@
 }
 
 .playersInputForm {
-
   display: flex;
   align-items: center;
   border: solid 1px yellow;
@@ -356,13 +304,9 @@
   height:auto;
   border-radius: 32px;
   cursor: pointer;
-
-
 }
 
 .submitPlayersButton {
-
-
   background-color: darkolivegreen;
   border-radius: inherit;
   color: white;
@@ -389,24 +333,17 @@
   top: 9%;
   right: 9%;
   cursor: pointer;
-
-
-
-
 }
 
 .remove_Player_Button{
-
   background-color: darkred;
   color: white;
   padding: 5px;
   font-weight: bold;
-
   border-radius: 20%;
   margin-left: 10px;
   margin-right: auto;
   cursor: pointer;
-
 }
 
 

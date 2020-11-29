@@ -186,7 +186,6 @@ const propertyData = (state = initialState, action ) => {
     switch (action.type) {
 
         case 'PURCHASE_PROPERTY':
-
             const propertyID = action.payload.active_properties_data.id;
             const playerName = action.payload.active_Player_obj.map(x => x.name);
             const propertyName = action.payload.active_properties_data.name.toString();
@@ -202,9 +201,6 @@ const propertyData = (state = initialState, action ) => {
                     rent: rentOfProp
                 }
             };
-
-
-
 
         default:
 

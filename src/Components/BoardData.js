@@ -114,37 +114,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps) (BoardData)
-
-
-// {TO DO LIST}  //
-
-
-//- unless double, roll once-                                                                   **** DONE!!
-//- players to be on outside of board - position will be : 'absolute' // parent relative,       **** DONE!!
-//- add images no background                                                                    **** DONE!!
-// - implement rent                                                                              **** DONE!!
-// - current player - money display in UI, mark on UI purchased property,                       ******DONE !!!!
-// pass go get 200                                                                              **** DONE!!!
-// income tax - reducer
-// title for prop bold                                                                          **** DONE!!
-// remove price, move  numbers to bottom,                                                       ***** DONE!!
-// players color ... each player added to store                                                 *****DONE!!!
-// change anywhere class to functional, useSelectors //
-// player data on main board  data price properties with color of propers cards divs           ******DONE!!!!
-
-
-// fix dice  z index                                    DONE!!!
-// images fix                                       DONE!!!
-// player names more cirlly- radius               DONE!!!
-// apppeal to buyer to puchase, cost preview     DONE!!!
-// h1 to pay rent how much lost
-// dice animation                                   DONE !!!
-
-
-// ADD BORDER RADIUS TO COLOR PLAYERINFO UI 9PX 9 0 0
-// jire ticketing
-// two seniors above me , recommended i do personal project, its been fun.
-// ccontrol option I
-// watch vid jest and enzyme vid - react tests  used a little bit in the digital agency, not that fam but know the core
-// react test renderer
-//

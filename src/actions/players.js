@@ -7,7 +7,6 @@ const submitPlayers = (payload) => {
         payload,
 
     }
-
 };
 
 export default submitPlayers

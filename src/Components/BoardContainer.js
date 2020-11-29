@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import BoardData from "./BoardData";
 import {connect} from "react-redux";
-import diceAction from "../actions/diceAction";
 import submitPlayers from "../actions/players";
 
 
@@ -73,8 +72,6 @@ class BoardContainer extends Component {
             alignItems:'flex-end', height: '80%', padding: '1px',}}> {places} </div>
     };
 
-
-
     randomColorGenerator = () => {
         let letters = '0123456789ABCDEF';
         let color = '#';
@@ -84,17 +81,17 @@ class BoardContainer extends Component {
         return color;
     };
 
-
     // after submitting, removes input box  && dispatches action - moving this state data into store //
     onFinish = () => {
-        this.setState({ showPlayersPrompt: false });
-        this.props.addPlayersToStore(this.state.players);
-        alert('lets Play! click on the dice to get rolling!');
-    };
+            this.setState({showPlayersPrompt: false});
+            this.props.addPlayersToStore(this.state.players);
+            alert('lets Play! click on the dice to get rolling!');
+
+        };
 
     // grabs input value {playerName}, moves to state //
     handleKeyDown = (event) => {
-        event.target.value == " " ?  alert('Please Enter a Name') :  this.setState({playerName: event.target.value})
+        event.target.value === " " ?  alert('Please Enter a Name') :  this.setState({playerName: event.target.value})
     };
 
     // grabs players name, adds to state, moves to state with player data to store when submitted//
@@ -137,7 +134,10 @@ class BoardContainer extends Component {
     };
 
 
+
+
     render() {
+
 
         const { showPlayersPrompt, playerName, players } = this.state;
 
@@ -163,7 +163,7 @@ class BoardContainer extends Component {
                             onChange={event => this.handleKeyDown(event)} required/>
 
                         <br />
-                        <button    className={'add_Player_Button'}type={'submit'}>Add Player</button>
+                        <button    className={'add_Player_Button'} type={'submit'}>Add Player</button>
 
                     </form>
 
@@ -180,7 +180,10 @@ class BoardContainer extends Component {
                                 onClick={  () => this.onRemovePlayer(index)}>X</button></div>  )}
                     <br />   <br />  <br />
 
-                    <button className={'submitPlayersButton'} onClick={this.onFinish}>Finished </button>
+                    {this.state.players.length === 0 ?
+                        null : <button className={'submitPlayersButton'} onClick={this.onFinish}>Finished </button>
+                    }
+
 
                 </div> }
                 {/*//The above renders at the beginning, then dissapears once submitted- Input player names using INPUT, moves to STATE with player data//*/}
@@ -196,7 +199,6 @@ class BoardContainer extends Component {
                 {this.renderBoardBottom()}
                 {this.isPlayerBroke}
             </div>
-
 
         )
     }

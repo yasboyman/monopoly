@@ -10,29 +10,22 @@ const initialState = {
 const diceReducer  = (state =  initialState, action) => {
     switch (action.type) {
 
-case 'DICE_CLICKED':
-
-
-
-    // const totalDiceMovement =  state.dicePosition + state.totalDice
-
+        case 'DICE_CLICKED':
 //if state.dicePosition + state.totalDice > 40 ? state.dicePostion + state.totalDice - 40 : dicePosition+totalDice
 
-      const dice1 =  Math.floor(Math.random() * 6 + 1);
-        const dice2 = Math.floor(Math.random() * 6 + 1);
+            const dice1 =  Math.floor(Math.random() * 6 + 1);
+            const dice2 = Math.floor(Math.random() * 6 + 1);
             let totalDice = dice1 + dice2;
             const position = state.dicePosition + totalDice;
 
 
-    return {
-        ...state,
+            return {
+                ...state,
+                dicePosition: position > 40 ?  position - 40 : position,
+                dice1: state.dice1 = [dice1],
+                dice2: state.dice2 = [dice2]
 
-        dicePosition: position > 40 ?  position - 40 : position,
-        dice1: state.dice1 = [dice1],
-        dice2: state.dice2 = [dice2]
-
-    };
-
+            };
 
         default:
             return state;
